@@ -136,39 +136,6 @@
       margin-bottom: var(--sp-24);
     }
 
-    /* --- CV SECTION --- */
-    .cv-section {
-      padding: var(--sp-64) 0;
-      text-align: center;
-      background: var(--color-surface-alt);
-    }
-    .cv-card {
-      max-width: 480px;
-      margin: 0 auto;
-      padding: var(--sp-40);
-      text-align: center;
-      background: linear-gradient(135deg, var(--pink-50), var(--cream-100));
-      border: 2px dashed var(--color-accent);
-      border-radius: var(--radius-2xl);
-      transition: all var(--duration) var(--ease-out);
-    }
-    .cv-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-    }
-    [data-theme="dark"] .cv-card { background: linear-gradient(135deg, var(--berry-800), #3A1F2B); }
-    .cv-card__title {
-      font-family: var(--font-display);
-      font-size: var(--text-xl);
-      font-weight: var(--weight-bold);
-      margin-bottom: var(--sp-8);
-    }
-    .cv-card__desc {
-      font-size: var(--text-sm);
-      color: var(--color-text-secondary);
-      margin-bottom: var(--sp-20);
-    }
-
     /* --- GOODBYE --- */
     .goodbye {
       padding: var(--sp-80) 0;
@@ -196,8 +163,6 @@
       .contact-section { padding: var(--sp-16) 0 var(--sp-48); }
       .contact-grid { grid-template-columns: 1fr; padding: 0 var(--grid-margin-mobile); gap: var(--sp-20); }
       .contact-form-wrapper { padding: var(--sp-24); }
-      .cv-section { padding: var(--sp-48) 0; }
-      .cv-card { margin: 0 var(--grid-margin-mobile); padding: var(--sp-32); }
       .goodbye { padding: var(--sp-48) 0; }
     }
   </style>
@@ -282,37 +247,31 @@
         <div class="contact-form-wrapper">
           <div class="contact-form__title">Drop a message</div>
           <div class="contact-form__subtitle">I'll get back to you faster than I finish my matcha.</div>
-          <form class="contact-form" onsubmit="event.preventDefault();alert('Form submitted! (demo only)')">
+          <form class="contact-form" action="https://formsubmit.co/nhithl.ad@gmail.com" method="POST" id="contactForm">
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-16);">
               <div class="input-group">
                 <label class="input-group__label" for="name">Your name</label>
-                <input class="input" type="text" id="name" placeholder="What should I call you?">
+                <input class="input" type="text" id="name" name="name" placeholder="What should I call you?" required>
               </div>
               <div class="input-group">
                 <label class="input-group__label" for="email">Your email</label>
-                <input class="input" type="email" id="email" placeholder="so I can write back~">
+                <input class="input" type="email" id="email" name="_replyto" placeholder="so I can write back~" required>
               </div>
             </div>
             <div class="input-group">
               <label class="input-group__label" for="subject">Subject</label>
-              <input class="input" type="text" id="subject" placeholder="What's this about?">
+              <input class="input" type="text" id="subject" name="_subject" placeholder="What's this about?">
             </div>
             <div class="input-group">
               <label class="input-group__label" for="message">Message</label>
-              <textarea class="input" id="message" placeholder="Tell me everything... or just say hi"></textarea>
+              <textarea class="input" id="message" name="message" placeholder="Tell me everything... or just say hi" required></textarea>
             </div>
+            <input type="hidden" name="_next" value="https://meoghetanca.github.io/portfolio/contact.html">
+            <input type="hidden" name="_captcha" value="true">
+            <input type="hidden" name="_template" value="table">
             <button type="submit" class="btn btn--primary" style="align-self:flex-start;">Send it</button>
           </form>
         </div>
-      </div>
-    </section>
-
-    <!-- CV -->
-    <section class="cv-section">
-      <div class="cv-card">
-        <div class="cv-card__title">Grab my CV</div>
-        <div class="cv-card__desc">Want the formal version? Here's my resume with all the serious stuff.</div>
-        <a href="#" class="btn btn--primary">Download CV</a>
       </div>
     </section>
 
