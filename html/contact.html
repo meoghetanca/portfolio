@@ -247,7 +247,7 @@
         <div class="contact-form-wrapper">
           <div class="contact-form__title">Drop a message</div>
           <div class="contact-form__subtitle">I'll get back to you faster than I finish my matcha.</div>
-          <form class="contact-form" action="https://formspree.io/f/nhithl.ad@gmail.com" method="POST" id="contactForm">
+          <form class="contact-form" action="https://formsubmit.co/nhithl.ad@gmail.com" method="POST" id="contactForm">
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-16);">
               <div class="input-group">
                 <label class="input-group__label" for="name">Your name</label>
@@ -266,7 +266,9 @@
               <label class="input-group__label" for="message">Message</label>
               <textarea class="input" id="message" name="message" placeholder="Tell me everything... or just say hi" required></textarea>
             </div>
-            <input type="hidden" name="_next" value="contact.html">
+            <input type="hidden" name="_next" value="https://meoghetanca.github.io/portfolio/html/contact.html">
+            <input type="hidden" name="_captcha" value="true">
+            <input type="hidden" name="_template" value="table">
             <button type="submit" class="btn btn--primary" style="align-self:flex-start;">Send it</button>
           </form>
         </div>
