@@ -3,7 +3,7 @@
    Tokens + Components + Layout
    ============================================ */
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
-@import url('../tokens/tokens.css');
+@import url('tokens/tokens.css');
 
 /* --- Reset --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
