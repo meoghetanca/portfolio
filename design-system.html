@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System — Strawberry Milk</title>
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .ds { padding: var(--sp-48) 0; }
+    .ds .container { max-width: var(--max-content); margin: 0 auto; padding: 0 var(--sp-32); }
+    .ds h1 { margin-bottom: var(--sp-48); }
+    .ds-section { margin-bottom: var(--sp-64); }
+    .ds-section__title {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      margin-bottom: var(--sp-24);
+      padding-bottom: var(--sp-12);
+      border-bottom: 2px dashed var(--color-border);
+    }
+
+    /* Color swatches */
+    .color-row { display: flex; flex-wrap: wrap; gap: var(--sp-12); margin-bottom: var(--sp-24); }
+    .swatch {
+      width: 80px; height: 80px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border-soft);
+      display: flex;
+      align-items: flex-end;
+      padding: var(--sp-4);
+    }
+    .swatch__label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    }
+
+    /* Type specimens */
+    .type-row { margin-bottom: var(--sp-16); }
+    .type-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      margin-bottom: var(--sp-4);
+    }
+
+    /* Component demos */
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-16);
+      align-items: center;
+      margin-bottom: var(--sp-24);
+    }
+
+    .theme-toggle-demo { margin-bottom: var(--sp-24); }
+  </style>
+</head>
+<body>
+  <main class="page ds">
+    <div class="container">
+      <h1 class="heading-1">&#127827; Design System</h1>
+      <p class="subtitle" style="margin-bottom: var(--sp-48);">Strawberry Milk theme — tokens, typography, and components.</p>
+
+      <button class="btn btn--outline" onclick="toggleTheme()" style="margin-bottom: var(--sp-48);">Toggle dark mode</button>
+
+      <!-- COLORS -->
+      <div class="ds-section">
+        <div class="ds-section__title">Colors — Pink</div>
+        <div class="color-row">
+          <div class="swatch" style="background: var(--pink-50);"><span class="swatch__label" style="color: #333;">50</span></div>
+          <div class="swatch" style="background: var(--pink-100);"><span class="swatch__label" style="color: #333;">100</span></div>
+          <div class="swatch" style="background: var(--pink-200);"><span class="swatch__label" style="color: #333;">200</span></div>
+          <div class="swatch" style="background: var(--pink-300);"><span class="swatch__label">300</span></div>
+          <div class="swatch" style="background: var(--pink-400);"><span class="swatch__label">400</span></div>
+          <div class="swatch" style="background: var(--pink-500);"><span class="swatch__label">500</span></div>
+          <div class="swatch" style="background: var(--pink-600);"><span class="swatch__label">600</span></div>
+          <div class="swatch" style="background: var(--pink-700);"><span class="swatch__label">700</span></div>
+          <div class="swatch" style="background: var(--pink-800);"><span class="swatch__label">800</span></div>
+          <div class="swatch" style="background: var(--pink-900);"><span class="swatch__label">900</span></div>
+        </div>
+        <div class="ds-section__title">Colors — Cream</div>
+        <div class="color-row">
+          <div class="swatch" style="background: var(--cream-50);"><span class="swatch__label" style="color: #333;">50</span></div>
+          <div class="swatch" style="background: var(--cream-100);"><span class="swatch__label" style="color: #333;">100</span></div>
+          <div class="swatch" style="background: var(--cream-200);"><span class="swatch__label" style="color: #333;">200</span></div>
+          <div class="swatch" style="background: var(--cream-300);"><span class="swatch__label" style="color: #333;">300</span></div>
+        </div>
+        <div class="ds-section__title">Colors — Berry (Dark Theme)</div>
+        <div class="color-row">
+          <div class="swatch" style="background: var(--berry-800);"><span class="swatch__label">800</span></div>
+          <div class="swatch" style="background: var(--berry-900);"><span class="swatch__label">900</span></div>
+        </div>
+      </div>
+
+      <!-- TYPOGRAPHY -->
+      <div class="ds-section">
+        <div class="ds-section__title">Typography</div>
+        <div class="type-row">
+          <div class="type-label">heading-1 / Baloo 2 / 4.5rem / 800</div>
+          <div class="heading-1">Strawberry Dreams</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">heading-2 / Baloo 2 / 2.5rem / 700</div>
+          <div class="heading-2">Sweet Like Milk</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">heading-3 / Baloo 2 / 1.5rem / 700</div>
+          <div class="heading-3">Berry Nice To Meet You</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">subtitle / Nunito / 1.125rem</div>
+          <div class="subtitle">A subtitle for important secondary information.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">body / Nunito / 1rem</div>
+          <p>Regular body text in Nunito. Soft, rounded, and easy to read. Perfect for paragraph content that needs to feel warm and approachable.</p>
+        </div>
+        <div class="type-row">
+          <div class="type-label">caption / IBM Plex Mono / 0.875rem</div>
+          <div class="caption">monospace caption for labels and metadata</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">gradient-text</div>
+          <div class="heading-2"><span class="gradient-text">Pink Gradient</span></div>
+        </div>
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="ds-section">
+        <div class="ds-section__title">Buttons</div>
+        <div class="demo-row">
+          <button class="btn btn--primary">Primary &#10024;</button>
+          <button class="btn btn--outline">Outline &#127827;</button>
+          <button class="btn btn--ghost">Ghost</button>
+        </div>
+      </div>
+
+      <!-- CARDS -->
+      <div class="ds-section">
+        <div class="ds-section__title">Cards</div>
+        <div class="demo-row" style="align-items: stretch;">
+          <div class="card" style="width: 250px;">
+            <div class="heading-3">Default Card</div>
+            <p class="subtitle" style="margin-top: var(--sp-8);">Clean with hover lift</p>
+          </div>
+          <div class="card card--cartoon" style="width: 250px;">
+            <div class="heading-3">Cartoon Card</div>
+            <p class="subtitle" style="margin-top: var(--sp-8);">Dashed border + corner accent</p>
+          </div>
+          <div class="card card--glow" style="width: 250px;">
+            <div class="heading-3">Glow Card</div>
+            <p class="subtitle" style="margin-top: var(--sp-8);">Glows pink on hover</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAGS -->
+      <div class="ds-section">
+        <div class="ds-section__title">Tags</div>
+        <div class="demo-row">
+          <span class="tag">Default Tag</span>
+          <span class="tag tag--strawberry">Strawberry</span>
+          <span class="tag tag--cream">Cream</span>
+        </div>
+      </div>
+
+      <!-- INPUTS -->
+      <div class="ds-section">
+        <div class="ds-section__title">Form Inputs</div>
+        <div style="max-width: 400px;">
+          <div class="input-group" style="margin-bottom: var(--sp-16);">
+            <label class="input-group__label">Text Input</label>
+            <input class="input" type="text" placeholder="Type something sweet~">
+          </div>
+          <div class="input-group">
+            <label class="input-group__label">Textarea</label>
+            <textarea class="input" placeholder="More room for sweetness..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- DECORATIONS -->
+      <div class="ds-section">
+        <div class="ds-section__title">Decorative Elements</div>
+        <div class="demo-row" style="height: 100px; position: relative;">
+          <div class="deco-star" style="position: relative;"></div>
+          <span class="sparkle" style="font-size: 2rem;">&#10024;</span>
+          <span class="sparkle" style="font-size: 2rem; animation-delay: -1s;">&#127827;</span>
+          <div class="avatar" style="width: 80px; height: 80px;">
+            <div class="avatar__placeholder" style="font-size: 2rem;">&#128049;</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+    }
+  </script>
+</body>
+</html>

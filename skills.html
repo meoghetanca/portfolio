@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills | Linh Nhi</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    /* --- HERO --- */
+    .exp-hero {
+      padding: var(--sp-80) 0 var(--sp-48);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .exp-hero__subtitle {
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+      max-width: 480px;
+      margin: var(--sp-12) auto 0;
+    }
+
+    /* --- SUPERPOWERS --- */
+    .powers {
+      padding: var(--sp-80) 0;
+      position: relative;
+    }
+    .powers__grid {
+      max-width: var(--max-content);
+      margin: 0 auto;
+      padding: 0 var(--grid-margin-desktop);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-16);
+    }
+    .power-card {
+      padding: var(--sp-32);
+      border-radius: var(--radius-2xl);
+      background: var(--color-card);
+      border: 1.5px solid var(--color-border);
+      transition: all var(--duration) var(--ease-out);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-8);
+      position: relative;
+      overflow: hidden;
+    }
+    .power-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--pink-300), var(--pink-500), var(--pink-300));
+      opacity: 0;
+      transition: opacity var(--duration) var(--ease-out);
+    }
+    .power-card:hover {
+      border-color: var(--color-accent);
+      box-shadow: 0 12px 40px rgba(255, 107, 138, 0.12);
+      transform: translateY(-4px);
+    }
+    .power-card:hover::before { opacity: 1; }
+    .power-card__icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--pink-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--sp-4);
+      flex-shrink: 0;
+    }
+    .power-card__icon svg {
+      width: 24px;
+      height: 24px;
+      color: var(--pink-500);
+    }
+    [data-theme="dark"] .power-card__icon {
+      background: rgba(255, 107, 138, 0.12);
+    }
+    [data-theme="dark"] .power-card__icon svg {
+      color: var(--pink-400);
+    }
+    .power-card__title {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+    }
+    .power-card__desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+    }
+
+    /* --- SKILLS BENTO --- */
+    .skills-section {
+      padding: var(--sp-80) 0;
+      background: var(--color-surface-alt);
+    }
+    .skills-bento {
+      max-width: var(--max-content);
+      margin: 0 auto;
+      padding: 0 var(--grid-margin-desktop);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-16);
+    }
+    .skill-card {
+      padding: var(--sp-24);
+      border-radius: var(--radius-2xl);
+      background: var(--color-card);
+      border: 1.5px solid var(--color-border);
+      transition: all var(--duration) var(--ease-out);
+    }
+    .skill-card:hover {
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+    .skill-card__icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-xl);
+      background: var(--color-accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
+      margin-bottom: var(--sp-16);
+    }
+    .skill-card__title {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      margin-bottom: var(--sp-12);
+    }
+    .skill-card__list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-8);
+    }
+    .skill-card__item {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-8);
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+    }
+    .skill-card__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      min-width: 6px;
+    }
+
+    /* --- TOOLBOX --- */
+    .toolbox-section { padding: var(--sp-80) 0; }
+    .toolbox-grid {
+      max-width: var(--max-content);
+      margin: 0 auto;
+      padding: 0 var(--grid-margin-desktop);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-8);
+      justify-content: center;
+    }
+    .tool-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--sp-12) var(--sp-20);
+      background: var(--color-card);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-pill);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text);
+      transition: all var(--duration) var(--ease-out);
+    }
+    .tool-pill:hover {
+      border-color: var(--color-accent);
+      background: var(--color-accent);
+      color: #fff;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .exp-hero { padding: var(--sp-48) 0 var(--sp-32); }
+
+      .powers { padding: var(--sp-48) 0; }
+      .powers__grid { grid-template-columns: 1fr; padding: 0 var(--grid-margin-mobile); }
+
+      .skills-section { padding: var(--sp-48) 0; }
+      .skills-bento { grid-template-columns: 1fr; padding: 0 var(--grid-margin-mobile); }
+
+      .toolbox-section { padding: var(--sp-48) 0; }
+      .toolbox-grid { padding: 0 var(--grid-margin-mobile); }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo"><span class="nav__logo-icon"><svg width="24" height="24" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="18" rx="10" ry="11" fill="#FFB3C6"/><ellipse cx="13" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="19" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="16" cy="22" rx="1.2" ry="1.5" fill="#FF8FAB"/><circle cx="16" cy="9" r="3.5" fill="#8BC9A0"/><circle cx="13" cy="8" r="2.5" fill="#A3D9B1"/></svg></span> linh nhi</a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="experience.html" class="nav__link">Experience</a>
+        <a href="skills.html" class="nav__link nav__link--active">Skills</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+        <button class="nav__theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="nav__theme-emoji nav__theme-emoji--light">&#9728;&#65039;</span><span class="nav__theme-emoji nav__theme-emoji--dark">&#127769;</span></button>
+      </div>
+      <div style="display:flex;align-items:center;gap:var(--sp-12);">
+        <button class="nav__theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" id="mobileTheme" style="display:none;"><span class="nav__theme-emoji nav__theme-emoji--light">&#9728;&#65039;</span><span class="nav__theme-emoji nav__theme-emoji--dark">&#127769;</span></button>
+        <button class="nav__burger" onclick="toggleMobile()" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="nav__mobile-menu" id="mobileMenu">
+    <a href="index.html" class="nav__link">Home</a>
+    <a href="about.html" class="nav__link">About</a>
+    <a href="experience.html" class="nav__link">Experience</a>
+    <a href="skills.html" class="nav__link nav__link--active">Skills</a>
+    <a href="contact.html" class="nav__link">Contact</a>
+    <button class="nav__theme-toggle" onclick="toggleTheme()" style="margin-top:var(--sp-16);"><span class="nav__theme-emoji nav__theme-emoji--light">&#9728;&#65039;</span><span class="nav__theme-emoji nav__theme-emoji--dark">&#127769;</span></button>
+  </div>
+
+  <main class="page">
+    <!-- HERO -->
+    <section class="exp-hero">
+      <div class="gradient-mesh">
+        <div class="gradient-mesh__blob" style="width:300px;height:300px;background:var(--pink-200);top:-5%;left:10%;"></div>
+        <div class="gradient-mesh__blob" style="width:200px;height:200px;background:var(--cream-200);bottom:0;right:15%;"></div>
+      </div>
+      <div class="container" style="position:relative;z-index:1;">
+        <span class="section-header__label">// my toolkit</span>
+        <h1 class="heading-1"><span class="section-header__underline">Skills</span></h1>
+        <p class="exp-hero__subtitle">The tools, methods, and superpowers I bring to every project.</p>
+      </div>
+    </section>
+
+    <!-- SUPERPOWERS -->
+    <section class="powers">
+      <div class="section-header">
+        <span class="section-header__label">// what i bring</span>
+        <h2 class="heading-2"><span class="section-header__underline">my superpowers</span></h2>
+      </div>
+      <div class="powers__grid">
+        <div class="power-card">
+          <div class="power-card__icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg></div>
+          <div class="power-card__title">Project Planning</div>
+          <div class="power-card__desc">Breaking big goals into clear milestones, setting timelines, and keeping every deliverable on track.</div>
+        </div>
+        <div class="power-card">
+          <div class="power-card__icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+          <div class="power-card__title">Stakeholder Wrangling</div>
+          <div class="power-card__desc">Translating between engineering, design, and business. Making sure everyone's building the same thing.</div>
+        </div>
+        <div class="power-card">
+          <div class="power-card__icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg></div>
+          <div class="power-card__title">Data-Informed Decisions</div>
+          <div class="power-card__desc">Tracking KPIs, analyzing progress, and using data to make smarter calls on scope and priorities.</div>
+        </div>
+        <div class="power-card">
+          <div class="power-card__icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 11v2h4v-2h-4zm-2 6.61c.96.71 2.21 1.65 3.2 2.39.4-.53.8-1.07 1.2-1.6-.99-.74-2.24-1.68-3.2-2.4-.4.54-.8 1.08-1.2 1.61zM20.4 5.6c-.4-.53-.8-1.07-1.2-1.6-.99.74-2.24 1.68-3.2 2.4.4.53.8 1.07 1.2 1.6.96-.72 2.21-1.65 3.2-2.4zM4 9c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h1l5 3V6L5 9H4zm11.5 3c0-1.33-.58-2.53-1.5-3.35v6.69c.92-.81 1.5-2.01 1.5-3.34z"/></svg></div>
+          <div class="power-card__title">Marketing DNA</div>
+          <div class="power-card__desc">Background in social media, SEO, and partnerships. I understand users because I've marketed to them.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS BENTO -->
+    <section class="skills-section">
+      <div class="section-header">
+        <span class="section-header__label">// skills</span>
+        <h2 class="heading-2"><span class="section-header__underline">what i bring</span></h2>
+      </div>
+      <div class="skills-bento">
+        <div class="skill-card">
+          <div class="skill-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4H8a2 2 0 00-2 2v14a1 1 0 001 1h10a1 1 0 001-1V6a2 2 0 00-2-2z"/><path d="M9 2h6v3H9z"/><circle cx="12" cy="13" r="3"/><circle cx="12" cy="13" r="1" fill="currentColor"/></svg></div>
+          <div class="skill-card__title">Project Management</div>
+          <div class="skill-card__list">
+            <div class="skill-card__item"><div class="skill-card__dot"></div>Product Strategy &amp; Roadmapping</div>
+            <div class="skill-card__item"><div class="skill-card__dot"></div>User Story Writing</div>
+            <div class="skill-card__item"><div class="skill-card__dot"></div>Sprint Planning &amp; Agile</div>
+            <div class="skill-card__item"><div class="skill-card__dot"></div>User Research &amp; Testing</div>
+            <div class="skill-card__item"><div class="skill-card__dot"></div>Stakeholder Management</div>
+            <div class="skill-card__item"><div class="skill-card__dot"></div>Data Analysis &amp; Metrics</div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 5c0 0-4 2-11 2H6a2 2 0 00-2 2v2a2 2 0 002 2h4c7 0 11 2 11 2V5z"/><path d="M6 13v5a1 1 0 001 1h2a1 1 0 001-1v-4"/><line x1="21" y1="10" x2="23" y2="10"/><line x1="22" y1="6" x2="23.5" y2="5"/><line x1="22" y1="14" x2="23.5" y2="15"/></svg></div>
+          <div class="skill-card__title">Marketing</div>
+          <div class="skill-card__list">
+            <div class="skill-card__item"><div class="skill-card__dot"></div>Social Media Strategy</div>
+            <div class="skill-card__item"><div class="skill-card__dot"></div>SEO &amp; Content Marketing</div>
+            <div class="skill-card__item"><div class="skill-card__dot"></div>Influencer Partnerships</div>
+            <div class="skill-card__item"><div class="skill-card__dot"></div>Campaign Execution</div>
+            <div class="skill-card__item"><div class="skill-card__dot"></div>Community Building</div>
+            <div class="skill-card__item"><div class="skill-card__dot"></div>PR &amp; Communications</div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+          <div class="skill-card__title">Tools &amp; Methods</div>
+          <div class="skill-card__list">
+            <div class="skill-card__item"><div class="skill-card__dot"></div>Plane (Project Management)</div>
+            <div class="skill-card__item"><div class="skill-card__dot"></div>Figma &amp; Design Tools</div>
+            <div class="skill-card__item"><div class="skill-card__dot"></div>Analytics Platforms</div>
+            <div class="skill-card__item"><div class="skill-card__dot"></div>Notion &amp; Documentation</div>
+            <div class="skill-card__item"><div class="skill-card__dot"></div>Cross-functional Collaboration</div>
+            <div class="skill-card__item"><div class="skill-card__dot"></div>Event Planning</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLBOX -->
+    <section class="toolbox-section">
+      <div class="section-header">
+        <span class="section-header__label">// daily toolkit</span>
+        <h2 class="heading-2"><span class="section-header__underline">things i use</span></h2>
+      </div>
+      <div class="toolbox-grid">
+        <span class="tool-pill">Plane</span>
+        <span class="tool-pill">Figma</span>
+        <span class="tool-pill">Notion</span>
+        <span class="tool-pill">Slack</span>
+        <span class="tool-pill">Google Analytics</span>
+        <span class="tool-pill">Linear</span>
+        <span class="tool-pill">Framer</span>
+        <span class="tool-pill">Canva</span>
+        <span class="tool-pill">VS Code</span>
+        <span class="tool-pill">GitHub</span>
+        <span class="tool-pill">Miro</span>
+        <span class="tool-pill">Google Sheets</span>
+      </div>
+    </section>
+
+<footer class="footer" style="border-top:1.5px solid var(--color-border);padding:var(--sp-32) 0;">
+  <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--sp-16);">
+    <div style="display:flex;align-items:center;gap:var(--sp-8);">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="18" rx="10" ry="11" fill="#FFB3C6"/><ellipse cx="13" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="19" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="16" cy="22" rx="1.2" ry="1.5" fill="#FF8FAB"/><circle cx="16" cy="9" r="3.5" fill="#8BC9A0"/><circle cx="13" cy="8" r="2.5" fill="#A3D9B1"/></svg>
+      <span style="font-family:var(--font-display);font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--color-text);">Linh Nhi</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:var(--sp-20);font-size:var(--text-sm);">
+      <a href="mailto:nhithl.ad@gmail.com" style="color:var(--color-text-secondary);">nhithl.ad@gmail.com</a>
+      <a href="https://www.linkedin.com/in/nhithl" target="_blank" style="color:var(--color-text-secondary);">LinkedIn</a>
+      <a href="tel:+84392879904" style="color:var(--color-text-secondary);">+84 392 879 904</a>
+    </div>
+  </div>
+</footer>
+  </main>
+
+  <script>
+    function toggleTheme() { document.documentElement.setAttribute('data-theme', document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'); }
+    function toggleMobile() { document.getElementById('mobileMenu').classList.toggle('nav__mobile-menu--open'); document.querySelector('.nav__burger').classList.toggle('nav__burger--open'); }
+    (function(){var t=document.getElementById('mobileTheme');function u(){t.style.display=window.innerWidth<=768?'':'none';}u();window.addEventListener('resize',u);})();
+  </script>
+</body>
+</html>

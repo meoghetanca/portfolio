@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Linh Nhi</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .contact-hero {
+      padding: var(--sp-80) 0 var(--sp-48);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-hero__subtitle {
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+      max-width: 420px;
+      margin: var(--sp-12) auto 0;
+    }
+
+    /* --- CONTACT GRID --- */
+    .contact-section { padding: var(--sp-32) 0 var(--sp-64); }
+    .contact-grid {
+      max-width: var(--max-content);
+      margin: 0 auto;
+      padding: 0 var(--grid-margin-desktop);
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: var(--sp-32);
+      align-items: start;
+    }
+
+    /* --- INFO CARDS --- */
+    .contact-info { display: flex; flex-direction: column; gap: var(--sp-16); }
+    .info-card {
+      display: flex;
+      gap: var(--sp-16);
+      align-items: flex-start;
+      padding: var(--sp-20);
+      border-radius: var(--radius-2xl);
+      background: var(--color-card);
+      border: 1.5px solid var(--color-border);
+      transition: all var(--duration) var(--ease-out);
+    }
+    .info-card:hover {
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .info-card__icon {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      border-radius: var(--radius-xl);
+      background: var(--color-accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
+    }
+    .info-card__title {
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      margin-bottom: var(--sp-2);
+    }
+    .info-card__value {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+    }
+    .info-card__value a {
+      color: var(--color-accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* --- SOCIAL --- */
+    .social-section {
+      padding: var(--sp-20);
+      border-radius: var(--radius-2xl);
+      background: linear-gradient(135deg, var(--pink-50), var(--cream-100));
+      border: 1.5px solid var(--pink-200);
+    }
+    [data-theme="dark"] .social-section {
+      background: linear-gradient(135deg, rgba(255, 107, 138, 0.08), rgba(255, 107, 138, 0.03));
+      border-color: rgba(255, 143, 171, 0.2);
+    }
+    .social-section__title {
+      font-family: var(--font-display);
+      font-weight: var(--weight-bold);
+      margin-bottom: var(--sp-12);
+      font-size: var(--text-sm);
+    }
+    .social-links { display: flex; gap: var(--sp-8); flex-wrap: wrap; }
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--sp-8) var(--sp-20);
+      background: var(--color-card);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-pill);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text);
+      transition: all var(--duration) var(--ease-out);
+    }
+    .social-link:hover {
+      border-color: var(--color-accent);
+      background: var(--color-accent);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* --- FORM --- */
+    .contact-form-wrapper {
+      background: var(--color-card);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-2xl);
+      padding: var(--sp-32);
+      transition: all var(--duration) var(--ease-out);
+    }
+    .contact-form-wrapper:hover {
+      box-shadow: var(--shadow-lg);
+    }
+    .contact-form__title {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      margin-bottom: var(--sp-4);
+    }
+    .contact-form__subtitle {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      margin-bottom: var(--sp-24);
+    }
+
+    /* --- CV SECTION --- */
+    .cv-section {
+      padding: var(--sp-64) 0;
+      text-align: center;
+      background: var(--color-surface-alt);
+    }
+    .cv-card {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: var(--sp-40);
+      text-align: center;
+      background: linear-gradient(135deg, var(--pink-50), var(--cream-100));
+      border: 2px dashed var(--color-accent);
+      border-radius: var(--radius-2xl);
+      transition: all var(--duration) var(--ease-out);
+    }
+    .cv-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    [data-theme="dark"] .cv-card { background: linear-gradient(135deg, var(--berry-800), #3A1F2B); }
+    .cv-card__title {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      margin-bottom: var(--sp-8);
+    }
+    .cv-card__desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--sp-20);
+    }
+
+    /* --- GOODBYE --- */
+    .goodbye {
+      padding: var(--sp-80) 0;
+      text-align: center;
+    }
+    .goodbye__emoji {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: var(--sp-12);
+    }
+    .goodbye__text {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+    }
+    .goodbye__sub {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      margin-top: var(--sp-4);
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .contact-hero { padding: var(--sp-48) 0 var(--sp-32); }
+      .contact-section { padding: var(--sp-16) 0 var(--sp-48); }
+      .contact-grid { grid-template-columns: 1fr; padding: 0 var(--grid-margin-mobile); gap: var(--sp-20); }
+      .contact-form-wrapper { padding: var(--sp-24); }
+      .cv-section { padding: var(--sp-48) 0; }
+      .cv-card { margin: 0 var(--grid-margin-mobile); padding: var(--sp-32); }
+      .goodbye { padding: var(--sp-48) 0; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo"><span class="nav__logo-icon"><svg width="24" height="24" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="18" rx="10" ry="11" fill="#FFB3C6"/><ellipse cx="13" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="19" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="16" cy="22" rx="1.2" ry="1.5" fill="#FF8FAB"/><circle cx="16" cy="9" r="3.5" fill="#8BC9A0"/><circle cx="13" cy="8" r="2.5" fill="#A3D9B1"/></svg></span> linh nhi</a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="experience.html" class="nav__link">Experience</a>
+        <a href="skills.html" class="nav__link">Skills</a>
+        <a href="contact.html" class="nav__link nav__link--active">Contact</a>
+        <button class="nav__theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="nav__theme-emoji nav__theme-emoji--light">&#9728;&#65039;</span><span class="nav__theme-emoji nav__theme-emoji--dark">&#127769;</span></button>
+      </div>
+      <div style="display:flex;align-items:center;gap:var(--sp-12);">
+        <button class="nav__theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" id="mobileTheme" style="display:none;"><span class="nav__theme-emoji nav__theme-emoji--light">&#9728;&#65039;</span><span class="nav__theme-emoji nav__theme-emoji--dark">&#127769;</span></button>
+        <button class="nav__burger" onclick="toggleMobile()" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="nav__mobile-menu" id="mobileMenu">
+    <a href="index.html" class="nav__link">Home</a>
+    <a href="about.html" class="nav__link">About</a>
+    <a href="experience.html" class="nav__link">Experience</a>
+    <a href="skills.html" class="nav__link">Skills</a>
+    <a href="contact.html" class="nav__link nav__link--active">Contact</a>
+    <button class="nav__theme-toggle" onclick="toggleTheme()" style="margin-top:var(--sp-16);"><span class="nav__theme-emoji nav__theme-emoji--light">&#9728;&#65039;</span><span class="nav__theme-emoji nav__theme-emoji--dark">&#127769;</span></button>
+  </div>
+
+  <main class="page">
+    <!-- HERO -->
+    <section class="contact-hero">
+      <div class="gradient-mesh">
+        <div class="gradient-mesh__blob" style="width:300px;height:300px;background:var(--pink-200);top:-10%;right:10%;"></div>
+        <div class="gradient-mesh__blob" style="width:200px;height:200px;background:var(--cream-200);bottom:10%;left:5%;"></div>
+      </div>
+      <div class="container" style="position:relative;z-index:1;">
+        <span class="section-header__label">// let's chat</span>
+        <h1 class="heading-1"><span class="section-header__underline">Say Hello</span></h1>
+        <p class="contact-hero__subtitle">Got an idea? Want to collaborate? Or just want to talk about matcha? I'm all ears.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-section">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="info-card">
+            <div class="info-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg></div>
+            <div>
+              <div class="info-card__title">Email me</div>
+              <div class="info-card__value">
+                <a href="mailto:nhithl.ad@gmail.com">nhithl.ad@gmail.com</a>
+              </div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0 0-7-6.5-7-11a7 7 0 1114 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5" fill="currentColor"/></svg></div>
+            <div>
+              <div class="info-card__title">Location</div>
+              <div class="info-card__value">Vietnam</div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="12.01"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></div>
+            <div>
+              <div class="info-card__title">Currently at</div>
+              <div class="info-card__value">8seneca, Project Manager</div>
+            </div>
+          </div>
+          <div class="social-section">
+            <div class="social-section__title">Find me online</div>
+            <div class="social-links">
+              <a href="https://www.linkedin.com/in/nhithl" target="_blank" class="social-link">LinkedIn</a>
+              <a href="tel:+84392879904" class="social-link">+84 392 879 904</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrapper">
+          <div class="contact-form__title">Drop a message</div>
+          <div class="contact-form__subtitle">I'll get back to you faster than I finish my matcha.</div>
+          <form class="contact-form" onsubmit="event.preventDefault();alert('Form submitted! (demo only)')">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-16);">
+              <div class="input-group">
+                <label class="input-group__label" for="name">Your name</label>
+                <input class="input" type="text" id="name" placeholder="What should I call you?">
+              </div>
+              <div class="input-group">
+                <label class="input-group__label" for="email">Your email</label>
+                <input class="input" type="email" id="email" placeholder="so I can write back~">
+              </div>
+            </div>
+            <div class="input-group">
+              <label class="input-group__label" for="subject">Subject</label>
+              <input class="input" type="text" id="subject" placeholder="What's this about?">
+            </div>
+            <div class="input-group">
+              <label class="input-group__label" for="message">Message</label>
+              <textarea class="input" id="message" placeholder="Tell me everything... or just say hi"></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary" style="align-self:flex-start;">Send it</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- CV -->
+    <section class="cv-section">
+      <div class="cv-card">
+        <div class="cv-card__title">Grab my CV</div>
+        <div class="cv-card__desc">Want the formal version? Here's my resume with all the serious stuff.</div>
+        <a href="#" class="btn btn--primary">Download CV</a>
+      </div>
+    </section>
+
+    <!-- GOODBYE -->
+    <section class="goodbye">
+      <span class="goodbye__emoji sparkle"><svg width="18" height="18" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="18" rx="10" ry="11" fill="#FFB3C6"/><ellipse cx="13" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="19" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="16" cy="22" rx="1.2" ry="1.5" fill="#FF8FAB"/><circle cx="16" cy="9" r="3.5" fill="#8BC9A0"/><circle cx="13" cy="8" r="2.5" fill="#A3D9B1"/></svg></span>
+      <div class="goodbye__text">Thanks for stopping by!</div>
+      <div class="goodbye__sub">Hope your day is as sweet as strawberry milk</div>
+    </section>
+
+<footer class="footer" style="border-top:1.5px solid var(--color-border);padding:var(--sp-32) 0;">
+  <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--sp-16);">
+    <div style="display:flex;align-items:center;gap:var(--sp-8);">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="18" rx="10" ry="11" fill="#FFB3C6"/><ellipse cx="13" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="19" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="16" cy="22" rx="1.2" ry="1.5" fill="#FF8FAB"/><circle cx="16" cy="9" r="3.5" fill="#8BC9A0"/><circle cx="13" cy="8" r="2.5" fill="#A3D9B1"/></svg>
+      <span style="font-family:var(--font-display);font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--color-text);">Linh Nhi</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:var(--sp-20);font-size:var(--text-sm);">
+      <a href="mailto:nhithl.ad@gmail.com" style="color:var(--color-text-secondary);">nhithl.ad@gmail.com</a>
+      <a href="https://www.linkedin.com/in/nhithl" target="_blank" style="color:var(--color-text-secondary);">LinkedIn</a>
+      <a href="tel:+84392879904" style="color:var(--color-text-secondary);">+84 392 879 904</a>
+    </div>
+  </div>
+</footer>
+  </main>
+
+  <script>
+    function toggleTheme() { document.documentElement.setAttribute('data-theme', document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'); }
+    function toggleMobile() { document.getElementById('mobileMenu').classList.toggle('nav__mobile-menu--open'); document.querySelector('.nav__burger').classList.toggle('nav__burger--open'); }
+    (function(){var t=document.getElementById('mobileTheme');function u(){t.style.display=window.innerWidth<=768?'':'none';}u();window.addEventListener('resize',u);})();
+  </script>
+</body>
+</html>
