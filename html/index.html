@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linh Nhi | Project Manager</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    /* --- HERO --- */
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: var(--sp-64) 0 var(--sp-48);
+      background: linear-gradient(160deg, #FDDDE6 0%, #FFF0F3 30%, #FDE8EC 60%, #FCE4EC 100%);
+    }
+    [data-theme="dark"] .hero {
+      background: linear-gradient(160deg, var(--berry-900) 0%, #2A1520 50%, var(--berry-900) 100%);
+    }
+    .hero__inner {
+      max-width: var(--max-content);
+      margin: 0 auto;
+      padding: 0 var(--grid-margin-desktop);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-64);
+      align-items: center;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+    .hero__content { display: flex; flex-direction: column; gap: var(--sp-20); }
+
+    /* Strawberry milk badge */
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-8);
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1.5px solid var(--pink-200);
+      border-radius: var(--radius-pill);
+      padding: var(--sp-8) var(--sp-16);
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--pink-600);
+      width: fit-content;
+      animation: badge-bounce 3s ease-in-out infinite;
+    }
+    [data-theme="dark"] .hero__badge {
+      background: rgba(255, 107, 138, 0.12);
+      border-color: rgba(255, 143, 171, 0.25);
+      color: var(--pink-300);
+    }
+    @keyframes badge-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+    .hero__badge-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #4ADE80;
+      box-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+      animation: pulse-green 2s ease-in-out infinite;
+    }
+    @keyframes pulse-green {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .hero__greeting {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      color: var(--color-text-secondary);
+      font-weight: var(--weight-medium);
+    }
+    .hero__name {
+      font-family: var(--font-display);
+      font-size: var(--text-6xl);
+      font-weight: var(--weight-extrabold);
+      line-height: 1.05;
+      position: relative;
+    }
+    .hero__name-highlight {
+      position: relative;
+      display: inline-block;
+    }
+    .hero__name-highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: -4%;
+      width: 108%;
+      height: 14px;
+      background: linear-gradient(90deg, var(--pink-300), var(--pink-200));
+      opacity: 0.35;
+      border-radius: var(--radius-pill);
+      z-index: -1;
+      transform: rotate(-1deg);
+    }
+    [data-theme="dark"] .hero__name-highlight::after {
+      opacity: 0.2;
+    }
+    .hero__name-sub {
+      display: block;
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-secondary);
+      margin-top: var(--sp-8);
+      font-family: var(--font-body);
+    }
+    .hero__desc {
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+      max-width: 420px;
+    }
+    .hero__buttons { display: flex; gap: var(--sp-12); flex-wrap: wrap; }
+
+    /* Visual side — milk carton style frame */
+    .hero__visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .hero__photo-frame {
+      position: relative;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(12px);
+      border: 2px solid rgba(255, 183, 197, 0.5);
+      border-radius: 32px;
+      padding: 16px;
+      box-shadow: 0 20px 60px rgba(255, 107, 138, 0.15), 0 4px 16px rgba(0,0,0,0.04);
+    }
+    [data-theme="dark"] .hero__photo-frame {
+      background: rgba(45, 22, 32, 0.6);
+      border-color: rgba(255, 143, 171, 0.2);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+    .hero__photo-frame .profile-photo {
+      border: 3px solid var(--pink-300);
+    }
+
+    /* Floating strawberry decorations */
+    .strawberry-float {
+      position: absolute;
+      z-index: 2;
+      font-size: 2rem;
+      animation: float-berry 5s ease-in-out infinite;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+    }
+    .strawberry-float:nth-child(2) { top: -16px; right: -20px; animation-delay: -1s; font-size: 1.8rem; }
+    .strawberry-float:nth-child(3) { bottom: 20px; left: -24px; animation-delay: -2.5s; font-size: 1.5rem; }
+    .strawberry-float:nth-child(4) { top: 40%; right: -30px; animation-delay: -3.5s; font-size: 1.2rem; }
+    .strawberry-float:nth-child(5) { bottom: -12px; right: 30%; animation-delay: -4s; font-size: 1.4rem; }
+    @keyframes float-berry {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-8px) rotate(5deg); }
+      75% { transform: translateY(4px) rotate(-3deg); }
+    }
+
+    /* Floating stickers around photo */
+    .hero__sticker {
+      position: absolute;
+      z-index: 3;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1.5px solid var(--pink-200);
+      border-radius: var(--radius-2xl);
+      padding: var(--sp-8) var(--sp-16);
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-bold);
+      color: var(--pink-600);
+      box-shadow: 0 4px 12px rgba(255, 107, 138, 0.12);
+      transform: rotate(var(--rotate, 0deg));
+      transition: all var(--duration) var(--ease-out);
+      white-space: nowrap;
+    }
+    [data-theme="dark"] .hero__sticker {
+      background: rgba(45, 22, 32, 0.8);
+      border-color: rgba(255, 143, 171, 0.25);
+      color: var(--pink-300);
+    }
+    .hero__sticker:hover {
+      transform: rotate(0deg) scale(1.08);
+      box-shadow: 0 6px 20px rgba(255, 107, 138, 0.2);
+    }
+    .hero__sticker:nth-child(6) { top: 8px; right: -60px; --rotate: 4deg; }
+    .hero__sticker:nth-child(7) { bottom: 30%; left: -70px; --rotate: -5deg; }
+    .hero__sticker:nth-child(8) { bottom: -8px; right: -30px; --rotate: 2deg; }
+
+    /* --- MARQUEE --- */
+    .home-marquee {
+      margin: 0;
+      background: rgba(255, 255, 255, 0.5);
+      border-color: var(--pink-200);
+    }
+    [data-theme="dark"] .home-marquee {
+      background: var(--color-card);
+    }
+
+    /* --- BENTO GRID --- */
+    .bento-section {
+      padding: var(--sp-80) 0;
+      background: var(--color-surface-alt);
+      position: relative;
+    }
+    .bento-grid {
+      max-width: var(--max-content);
+      margin: 0 auto;
+      padding: 0 var(--grid-margin-desktop);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto auto;
+      gap: var(--sp-16);
+    }
+    .bento-card--stat {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 140px;
+      position: relative;
+      overflow: hidden;
+    }
+    .bento-card--stat::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      opacity: 0.06;
+    }
+    .bento-card--wide { grid-column: span 2; }
+    .bento-stat__number {
+      font-family: var(--font-display);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-extrabold);
+      color: var(--color-accent);
+      line-height: 1;
+    }
+    .bento-stat__label {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      margin-top: var(--sp-4);
+      font-weight: var(--weight-medium);
+    }
+    .bento-card--quote {
+      display: flex;
+      align-items: center;
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text);
+      font-style: italic;
+      line-height: var(--leading-snug);
+      position: relative;
+    }
+    .bento-card--quote::before {
+      content: '\201C';
+      position: absolute;
+      top: 8px;
+      left: 12px;
+      font-size: 3rem;
+      font-family: var(--font-display);
+      color: var(--color-accent);
+      opacity: 0.2;
+      line-height: 1;
+    }
+    .bento-card--role {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .bento-role__title {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+    }
+    .bento-role__company {
+      font-size: var(--text-sm);
+      color: var(--color-accent);
+      font-weight: var(--weight-semibold);
+    }
+    .bento-card--tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-8);
+      align-content: center;
+    }
+    .bento-tag {
+      display: inline-flex;
+      padding: var(--sp-8) var(--sp-16);
+      background: var(--color-accent-soft);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-pill);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      color: var(--color-accent);
+      transition: all var(--duration) var(--ease-out);
+    }
+    .bento-tag:hover {
+      background: var(--color-accent);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* --- SUPERPOWERS --- */
+    .powers {
+      padding: var(--sp-80) 0;
+      position: relative;
+    }
+    .powers__grid {
+      max-width: var(--max-content);
+      margin: 0 auto;
+      padding: 0 var(--grid-margin-desktop);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-16);
+    }
+    .power-card {
+      padding: var(--sp-32);
+      border-radius: var(--radius-2xl);
+      background: var(--color-card);
+      border: 1.5px solid var(--color-border);
+      transition: all var(--duration) var(--ease-out);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-8);
+      position: relative;
+      overflow: hidden;
+    }
+    .power-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--pink-300), var(--pink-500), var(--pink-300));
+      opacity: 0;
+      transition: opacity var(--duration) var(--ease-out);
+    }
+    .power-card:hover {
+      border-color: var(--color-accent);
+      box-shadow: 0 12px 40px rgba(255, 107, 138, 0.12);
+      transform: translateY(-4px);
+    }
+    .power-card:hover::before { opacity: 1; }
+    .power-card__icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--pink-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--sp-4);
+      flex-shrink: 0;
+    }
+    .power-card__icon svg {
+      width: 24px;
+      height: 24px;
+      color: var(--pink-500);
+    }
+    [data-theme="dark"] .power-card__icon {
+      background: rgba(255, 107, 138, 0.12);
+    }
+    [data-theme="dark"] .power-card__icon svg {
+      color: var(--pink-400);
+    }
+    .power-card__title {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+    }
+    .power-card__desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+    }
+
+    /* --- CTA --- */
+    .cta {
+      padding: var(--sp-96) 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, #FDDDE6, #FFF0F3, #FDE8EC);
+    }
+    [data-theme="dark"] .cta {
+      background: linear-gradient(160deg, #2A1520, var(--berry-900), #2A1520);
+    }
+    .cta__inner {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 0 var(--grid-margin-desktop);
+      position: relative;
+      z-index: 1;
+    }
+    .cta__heading { margin-bottom: var(--sp-12); }
+    .cta__desc {
+      color: var(--color-text-secondary);
+      font-size: var(--text-base);
+      margin-bottom: var(--sp-24);
+    }
+    .cta__strawberries {
+      display: flex;
+      justify-content: center;
+      gap: var(--sp-8);
+      margin-bottom: var(--sp-24);
+      font-size: 1.5rem;
+    }
+    .cta__strawberries span {
+      animation: float-berry 4s ease-in-out infinite;
+    }
+    .cta__strawberries span:nth-child(2) { animation-delay: -0.5s; }
+    .cta__strawberries span:nth-child(3) { animation-delay: -1s; }
+    .cta__strawberries span:nth-child(4) { animation-delay: -1.5s; }
+    .cta__strawberries span:nth-child(5) { animation-delay: -2s; }
+
+    /* --- MILK CARTON DECO (background) --- */
+    .milk-deco {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .milk-deco--circle {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 2px dashed var(--pink-200);
+      opacity: 0.3;
+    }
+    [data-theme="dark"] .milk-deco--circle {
+      border-color: rgba(255, 143, 171, 0.15);
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .hero { min-height: auto; padding: var(--sp-32) 0; }
+      .hero__inner {
+        grid-template-columns: 1fr;
+        gap: var(--sp-32);
+        padding: 0 var(--grid-margin-mobile);
+        text-align: center;
+      }
+      .hero__visual { order: -1; }
+      .hero__desc { max-width: 100%; }
+      .hero__buttons { justify-content: center; }
+      .hero__badge { margin: 0 auto; }
+      .hero__name { font-size: var(--text-4xl); }
+      .hero__sticker { display: none; }
+      .strawberry-float { font-size: 1.2rem !important; }
+      .strawberry-float:nth-child(2) { right: -8px; }
+      .strawberry-float:nth-child(3) { left: -8px; }
+      .strawberry-float:nth-child(4) { right: -12px; }
+
+      .hero__photo-frame { padding: 12px; }
+      .profile-photo--lg { width: 200px; height: 230px; }
+
+      .bento-section { padding: var(--sp-48) 0; }
+      .bento-grid {
+        grid-template-columns: 1fr 1fr;
+        padding: 0 var(--grid-margin-mobile);
+        gap: var(--sp-12);
+      }
+      .bento-card--wide { grid-column: span 2; }
+      .bento-stat__number { font-size: var(--text-2xl); }
+      .bento-card--stat { min-height: 100px; }
+
+      .powers { padding: var(--sp-48) 0; }
+      .powers__grid { grid-template-columns: 1fr; padding: 0 var(--grid-margin-mobile); }
+
+      .cta { padding: var(--sp-48) 0; }
+      .cta__inner { padding: 0 var(--grid-margin-mobile); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-icon"><svg width="24" height="24" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="18" rx="10" ry="11" fill="#FFB3C6"/><ellipse cx="13" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="19" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="16" cy="22" rx="1.2" ry="1.5" fill="#FF8FAB"/><circle cx="16" cy="9" r="3.5" fill="#8BC9A0"/><circle cx="13" cy="8" r="2.5" fill="#A3D9B1"/></svg></span> linh nhi
+      </a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link nav__link--active">Home</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="experience.html" class="nav__link">Experience</a>
+        <a href="skills.html" class="nav__link">Skills</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+        <button class="nav__theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+          <span class="nav__theme-emoji nav__theme-emoji--light">&#9728;&#65039;</span>
+          <span class="nav__theme-emoji nav__theme-emoji--dark">&#127769;</span>
+        </button>
+      </div>
+      <div style="display:flex;align-items:center;gap:var(--sp-12);">
+        <button class="nav__theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" id="mobileTheme" style="display:none;">
+          <span class="nav__theme-emoji nav__theme-emoji--light">&#9728;&#65039;</span>
+          <span class="nav__theme-emoji nav__theme-emoji--dark">&#127769;</span>
+        </button>
+        <button class="nav__burger" onclick="toggleMobile()" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="nav__mobile-menu" id="mobileMenu">
+    <a href="index.html" class="nav__link nav__link--active" onclick="toggleMobile()">Home</a>
+    <a href="about.html" class="nav__link" onclick="toggleMobile()">About</a>
+    <a href="experience.html" class="nav__link" onclick="toggleMobile()">Experience</a>
+    <a href="skills.html" class="nav__link" onclick="toggleMobile()">Skills</a>
+    <a href="contact.html" class="nav__link" onclick="toggleMobile()">Contact</a>
+    <button class="nav__theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" style="margin-top:var(--sp-16);">
+      <span class="nav__theme-emoji nav__theme-emoji--light">&#9728;&#65039;</span>
+      <span class="nav__theme-emoji nav__theme-emoji--dark">&#127769;</span>
+    </button>
+  </div>
+
+  <main class="page">
+    <!-- HERO -->
+    <section class="hero">
+      <!-- Background decorative circles -->
+      <div class="milk-deco milk-deco--circle" style="top: 10%; right: 5%;"></div>
+      <div class="milk-deco milk-deco--circle" style="bottom: 15%; left: 3%; width: 150px; height: 150px;"></div>
+
+      <div class="hero__inner">
+        <div class="hero__content">
+          <div class="hero__badge">
+            <span class="hero__badge-dot"></span>
+            open to opportunities
+          </div>
+          <div class="hero__greeting">hey there, i'm</div>
+          <h1 class="hero__name">
+            <span class="hero__name-highlight">Linh Nhi</span>
+            <span class="hero__name-sub">Project Manager @ 8seneca</span>
+          </h1>
+          <p class="hero__desc">
+            Keeping projects on track and teams in sync, so great things ship on time.
+            Marketing background, project mindset, detail obsessed.
+          </p>
+          <div class="hero__buttons">
+            <a href="about.html" class="btn btn--primary">Get to know me</a>
+            <a href="contact.html" class="btn btn--outline">Say hello</a>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="profile-photo profile-photo--lg">
+              <img src="images/profile.jpg" alt="Linh Nhi" loading="lazy">
+            </div>
+            <span class="strawberry-float"><svg width="36" height="36" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="18" rx="10" ry="11" fill="#FFB3C6"/><ellipse cx="13" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="19" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="16" cy="22" rx="1.2" ry="1.5" fill="#FF8FAB"/><circle cx="16" cy="9" r="3.5" fill="#8BC9A0"/><circle cx="13" cy="8" r="2.5" fill="#A3D9B1"/></svg></span>
+            <span class="strawberry-float"><svg width="30" height="30" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="18" rx="10" ry="11" fill="#FFB3C6"/><ellipse cx="13" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="19" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="16" cy="22" rx="1.2" ry="1.5" fill="#FF8FAB"/><circle cx="16" cy="9" r="3.5" fill="#8BC9A0"/><circle cx="13" cy="8" r="2.5" fill="#A3D9B1"/></svg></span>
+            <span class="strawberry-float"><svg width="26" height="26" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="18" rx="10" ry="11" fill="#FFB3C6"/><ellipse cx="13" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="19" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="16" cy="22" rx="1.2" ry="1.5" fill="#FF8FAB"/><circle cx="16" cy="9" r="3.5" fill="#8BC9A0"/><circle cx="13" cy="8" r="2.5" fill="#A3D9B1"/></svg></span>
+            <span class="strawberry-float"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="18" rx="10" ry="11" fill="#FFB3C6"/><ellipse cx="13" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="19" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="16" cy="22" rx="1.2" ry="1.5" fill="#FF8FAB"/><circle cx="16" cy="9" r="3.5" fill="#8BC9A0"/><circle cx="13" cy="8" r="2.5" fill="#A3D9B1"/></svg></span>
+            <div class="hero__sticker" style="--rotate: 4deg;">strawberry milk lover</div>
+            <div class="hero__sticker" style="--rotate: -5deg;">PS5 gamer</div>
+            <div class="hero__sticker" style="--rotate: 2deg;">hobby photog</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee home-marquee">
+      <div class="marquee__track">
+        <span class="marquee__item"><span class="marquee__dot"></span> project management</span>
+        <span class="marquee__item"><span class="marquee__dot"></span> user research</span>
+        <span class="marquee__item"><span class="marquee__dot"></span> sprint planning</span>
+        <span class="marquee__item"><span class="marquee__dot"></span> agile / scrum</span>
+        <span class="marquee__item"><span class="marquee__dot"></span> stakeholder management</span>
+        <span class="marquee__item"><span class="marquee__dot"></span> risk management</span>
+        <span class="marquee__item"><span class="marquee__dot"></span> marketing</span>
+        <span class="marquee__item"><span class="marquee__dot"></span> project management</span>
+        <span class="marquee__item"><span class="marquee__dot"></span> resource planning</span>
+        <span class="marquee__item"><span class="marquee__dot"></span> sprint planning</span>
+        <span class="marquee__item"><span class="marquee__dot"></span> agile / scrum</span>
+        <span class="marquee__item"><span class="marquee__dot"></span> stakeholder management</span>
+        <span class="marquee__item"><span class="marquee__dot"></span> risk management</span>
+        <span class="marquee__item"><span class="marquee__dot"></span> marketing</span>
+      </div>
+    </div>
+
+    <!-- BENTO GRID -->
+    <section class="bento-section">
+      <div class="section-header">
+        <span class="section-header__label">// at a glance</span>
+        <h2 class="heading-2"><span class="section-header__underline">quick facts</span></h2>
+      </div>
+      <div class="bento-grid">
+        <div class="bento-card bento-card--stat bento-card--accent">
+          <div class="bento-stat__number">1.3+</div>
+          <div class="bento-stat__label">years at 8seneca</div>
+        </div>
+        <div class="bento-card bento-card--stat">
+          <div class="bento-stat__number">4</div>
+          <div class="bento-stat__label">companies</div>
+        </div>
+        <div class="bento-card bento-card--role bento-card--wide">
+          <div class="bento-role__company">currently</div>
+          <div class="bento-role__title">Project Manager</div>
+          <div style="font-size:var(--text-sm);color:var(--color-text-secondary);margin-top:var(--sp-4);">Planning timelines, coordinating teams, running sprints, and making sure nothing falls through the cracks.</div>
+        </div>
+        <div class="bento-card bento-card--quote bento-card--wide bento-card--accent">
+          "I make project management fun. Life's too short for boring roadmaps."
+        </div>
+        <div class="bento-card bento-card--tags bento-card--wide">
+          <span class="bento-tag">Roadmapping</span>
+          <span class="bento-tag">Sprint Planning</span>
+          <span class="bento-tag">Figma</span>
+          <span class="bento-tag">Scrum</span>
+          <span class="bento-tag">Risk Management</span>
+          <span class="bento-tag">Jira / Plane</span>
+          <span class="bento-tag">Stakeholder Reporting</span>
+          <span class="bento-tag">Marketing</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="cta__inner">
+        <div class="cta__strawberries">
+          <span><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="18" rx="10" ry="11" fill="#FFB3C6"/><ellipse cx="13" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="19" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="16" cy="22" rx="1.2" ry="1.5" fill="#FF8FAB"/><circle cx="16" cy="9" r="3.5" fill="#8BC9A0"/><circle cx="13" cy="8" r="2.5" fill="#A3D9B1"/></svg></span>
+          <span><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="18" rx="10" ry="11" fill="#FFB3C6"/><ellipse cx="13" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="19" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="16" cy="22" rx="1.2" ry="1.5" fill="#FF8FAB"/><circle cx="16" cy="9" r="3.5" fill="#8BC9A0"/><circle cx="13" cy="8" r="2.5" fill="#A3D9B1"/></svg></span>
+          <span><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="18" rx="10" ry="11" fill="#FFB3C6"/><ellipse cx="13" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="19" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="16" cy="22" rx="1.2" ry="1.5" fill="#FF8FAB"/><circle cx="16" cy="9" r="3.5" fill="#8BC9A0"/><circle cx="13" cy="8" r="2.5" fill="#A3D9B1"/></svg></span>
+          <span><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="18" rx="10" ry="11" fill="#FFB3C6"/><ellipse cx="13" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="19" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="16" cy="22" rx="1.2" ry="1.5" fill="#FF8FAB"/><circle cx="16" cy="9" r="3.5" fill="#8BC9A0"/><circle cx="13" cy="8" r="2.5" fill="#A3D9B1"/></svg></span>
+          <span><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="18" rx="10" ry="11" fill="#FFB3C6"/><ellipse cx="13" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="19" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="16" cy="22" rx="1.2" ry="1.5" fill="#FF8FAB"/><circle cx="16" cy="9" r="3.5" fill="#8BC9A0"/><circle cx="13" cy="8" r="2.5" fill="#A3D9B1"/></svg></span>
+        </div>
+        <h2 class="heading-2 cta__heading">Let's make something<br><span class="gradient-text">sweet</span> together</h2>
+        <p class="cta__desc">Whether it's a project, a collaboration, or just a chat about strawberry milk, I'd love to hear from you.</p>
+        <a href="contact.html" class="btn btn--primary">Get in touch</a>
+      </div>
+    </section>
+
+<footer class="footer" style="border-top:1.5px solid var(--color-border);padding:var(--sp-32) 0;">
+  <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--sp-16);">
+    <div style="display:flex;align-items:center;gap:var(--sp-8);">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="18" rx="10" ry="11" fill="#FFB3C6"/><ellipse cx="13" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="19" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="16" cy="22" rx="1.2" ry="1.5" fill="#FF8FAB"/><circle cx="16" cy="9" r="3.5" fill="#8BC9A0"/><circle cx="13" cy="8" r="2.5" fill="#A3D9B1"/></svg>
+      <span style="font-family:var(--font-display);font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--color-text);">Linh Nhi</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:var(--sp-20);font-size:var(--text-sm);">
+      <a href="mailto:nhithl.ad@gmail.com" style="color:var(--color-text-secondary);">nhithl.ad@gmail.com</a>
+      <a href="https://www.linkedin.com/in/nhithl" target="_blank" style="color:var(--color-text-secondary);">LinkedIn</a>
+      <a href="tel:+84392879904" style="color:var(--color-text-secondary);">+84 392 879 904</a>
+    </div>
+  </div>
+</footer>
+  </main>
+
+  <script>
+    function toggleTheme() { document.documentElement.setAttribute('data-theme', document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'); }
+    function toggleMobile() { document.getElementById('mobileMenu').classList.toggle('nav__mobile-menu--open'); document.querySelector('.nav__burger').classList.toggle('nav__burger--open'); }
+    (function(){var t=document.getElementById('mobileTheme');function u(){t.style.display=window.innerWidth<=768?'':'none';}u();window.addEventListener('resize',u);})();
+  </script>
+</body>
+</html>

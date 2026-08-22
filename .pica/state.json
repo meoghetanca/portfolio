@@ -1,0 +1,33 @@
+{
+  "figmaInScope": false,
+  "delivered": false,
+  "viewports": [
+    {
+      "name": "desktop",
+      "w": 1440,
+      "h": 900,
+      "idiom": "desktop web, no device chrome",
+      "pointer": true,
+      "breakpoints": [1024],
+      "grid": { "columns": 12, "gutter": 24, "margin": 80, "maxContent": 1200 }
+    },
+    {
+      "name": "mobile",
+      "w": 375,
+      "h": 812,
+      "idiom": "mobile web, no device chrome",
+      "pointer": false,
+      "breakpoints": [],
+      "grid": { "columns": 4, "gutter": 16, "margin": 20, "maxContent": 335 }
+    }
+  ],
+  "flows": [
+    {
+      "app": "portfolio",
+      "entry": "index.html",
+      "home": "hero",
+      "owns": ["about", "experience", "contact"]
+    }
+  ],
+  "workPackages": {}
+}

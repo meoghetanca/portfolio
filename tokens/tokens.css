@@ -1,0 +1,136 @@
+/* ============================================
+   TOKENS — Strawberry Milk Portfolio
+   Generated from tokens.json
+   ============================================ */
+
+:root {
+  /* --- Pink palette --- */
+  --pink-50:  #FFF5F7;
+  --pink-100: #FFE8EE;
+  --pink-200: #FFD1DC;
+  --pink-300: #FFB3C6;
+  --pink-400: #FF8FAB;
+  --pink-500: #FF6B8A;
+  --pink-600: #E84D6D;
+  --pink-700: #C43558;
+  --pink-800: #9B2548;
+  --pink-900: #6D1A35;
+
+  /* --- Cream palette --- */
+  --cream-50:  #FFFDF9;
+  --cream-100: #FFF8EF;
+  --cream-200: #FFEFD6;
+  --cream-300: #FFE4BC;
+
+  /* --- Berry (dark theme base) --- */
+  --berry-800: #2D1620;
+  --berry-900: #1A0D14;
+
+  /* --- Semantic: Light theme --- */
+  --color-bg:            var(--pink-50);
+  --color-surface:       #FFFFFF;
+  --color-surface-alt:   var(--pink-100);
+  --color-text:          #4A2035;
+  --color-text-secondary:#8B5A6B;
+  --color-text-muted:    #B8899A;
+  --color-accent:        var(--pink-500);
+  --color-accent-hover:  var(--pink-600);
+  --color-accent-soft:   var(--pink-100);
+  --color-border:        var(--pink-200);
+  --color-border-soft:   rgba(255, 107, 138, 0.15);
+  --color-card:          #FFFFFF;
+  --color-nav:           rgba(255, 255, 255, 0.85);
+  --color-nav-active:    var(--pink-500);
+  --color-tag-bg:        var(--pink-100);
+  --color-tag-text:      var(--pink-700);
+  --color-cream:         var(--cream-100);
+  --color-strawberry:    var(--pink-400);
+
+  /* --- Typography --- */
+  --font-display: 'Baloo 2', cursive;
+  --font-body:    'Nunito', sans-serif;
+  --font-mono:    'IBM Plex Mono', monospace;
+
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+  --text-3xl:  2rem;
+  --text-4xl:  2.5rem;
+  --text-5xl:  3.5rem;
+  --text-6xl:  4.5rem;
+
+  --leading-tight:  1.2;
+  --leading-snug:   1.35;
+  --leading-normal: 1.6;
+
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-extrabold:800;
+
+  /* --- Spacing --- */
+  --sp-2:   0.125rem;
+  --sp-4:   0.25rem;
+  --sp-8:   0.5rem;
+  --sp-12:  0.75rem;
+  --sp-16:  1rem;
+  --sp-20:  1.25rem;
+  --sp-24:  1.5rem;
+  --sp-32:  2rem;
+  --sp-40:  2.5rem;
+  --sp-48:  3rem;
+  --sp-64:  4rem;
+  --sp-80:  5rem;
+  --sp-96:  6rem;
+  --sp-120: 7.5rem;
+
+  /* --- Radius --- */
+  --radius-sm:   0.5rem;
+  --radius-md:   0.75rem;
+  --radius-lg:   1rem;
+  --radius-xl:   1.5rem;
+  --radius-2xl:  2rem;
+  --radius-pill: 9999px;
+  --radius-blob: 30% 70% 70% 30% / 30% 30% 70% 70%;
+
+  /* --- Shadows --- */
+  --shadow-sm:   0 2px 8px rgba(255, 107, 138, 0.08);
+  --shadow-md:   0 4px 16px rgba(255, 107, 138, 0.12);
+  --shadow-lg:   0 8px 32px rgba(255, 107, 138, 0.16);
+  --shadow-glow: 0 0 20px rgba(255, 107, 138, 0.25);
+
+  /* --- Layout --- */
+  --max-content:  1200px;
+  --grid-margin-desktop: 80px;
+  --grid-margin-mobile:  20px;
+
+  /* --- Transitions --- */
+  --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+  --duration:  0.3s;
+}
+
+/* --- Dark theme --- */
+[data-theme="dark"] {
+  --color-bg:            var(--berry-900);
+  --color-surface:       var(--berry-800);
+  --color-surface-alt:   #3A1F2B;
+  --color-text:          #FFE8EE;
+  --color-text-secondary:#D4A0B0;
+  --color-text-muted:    #9B7085;
+  --color-accent:        var(--pink-400);
+  --color-accent-hover:  var(--pink-300);
+  --color-accent-soft:   rgba(255, 107, 138, 0.15);
+  --color-border:        rgba(255, 143, 171, 0.2);
+  --color-border-soft:   rgba(255, 143, 171, 0.1);
+  --color-card:          var(--berry-800);
+  --color-nav:           rgba(26, 13, 20, 0.9);
+  --color-nav-active:    var(--pink-400);
+  --color-tag-bg:        rgba(255, 107, 138, 0.15);
+  --color-tag-text:      var(--pink-300);
+  --color-cream:         #3A1F2B;
+  --color-strawberry:    var(--pink-500);
+}

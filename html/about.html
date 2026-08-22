@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Linh Nhi</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    /* --- HERO --- */
+    .about-hero {
+      padding: var(--sp-80) 0 var(--sp-64);
+      position: relative;
+      overflow: hidden;
+    }
+    .about-hero__inner {
+      max-width: var(--max-content);
+      margin: 0 auto;
+      padding: 0 var(--grid-margin-desktop);
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: var(--sp-48);
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .about-hero__photo-area { position: relative; }
+    .about-hero__photo-area .sticker {
+      position: absolute;
+      z-index: 2;
+    }
+    .about-hero__text { display: flex; flex-direction: column; gap: var(--sp-16); }
+    .about-hero__intro {
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+    }
+    .about-hero__highlight {
+      background: var(--color-accent-soft);
+      padding: var(--sp-16) var(--sp-20);
+      border-radius: var(--radius-2xl);
+      border-left: 4px solid var(--color-accent);
+      font-style: italic;
+      color: var(--color-text-secondary);
+      font-size: var(--text-sm);
+    }
+
+    /* --- BIO BENTO --- */
+    .bio-section { padding: var(--sp-64) 0; }
+    .bio-bento {
+      max-width: var(--max-content);
+      margin: 0 auto;
+      padding: 0 var(--grid-margin-desktop);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: var(--sp-16);
+    }
+    .bio-card {
+      padding: var(--sp-24);
+      border-radius: var(--radius-2xl);
+      background: var(--color-card);
+      border: 1.5px solid var(--color-border);
+      transition: all var(--duration) var(--ease-out);
+    }
+    .bio-card:hover {
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+    .bio-card--wide { grid-column: span 2; }
+    .bio-card--tall { grid-row: span 2; }
+    .bio-card__tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-accent);
+      background: var(--color-accent-soft);
+      padding: var(--sp-4) var(--sp-12);
+      border-radius: var(--radius-pill);
+      margin-bottom: var(--sp-12);
+    }
+    .bio-card__title {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      margin-bottom: var(--sp-8);
+    }
+    .bio-card__content {
+      color: var(--color-text-secondary);
+      font-size: var(--text-sm);
+      line-height: var(--leading-normal);
+    }
+
+    /* --- FUN FACTS --- */
+    .funfacts {
+      padding: var(--sp-80) 0;
+      background: var(--color-surface-alt);
+      position: relative;
+      overflow: hidden;
+    }
+    .funfacts__grid {
+      max-width: var(--max-content);
+      margin: 0 auto;
+      padding: 0 var(--grid-margin-desktop);
+    }
+    .fun-grid-bento {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-16);
+    }
+    .fun-card-v2 {
+      padding: var(--sp-24);
+      border-radius: var(--radius-2xl);
+      background: var(--color-card);
+      border: 1.5px solid var(--color-border);
+      transition: all var(--duration) var(--ease-out);
+      display: flex;
+      gap: var(--sp-16);
+      align-items: flex-start;
+    }
+    .fun-card-v2:hover {
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+    .fun-card-v2__icon {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      border-radius: var(--radius-xl);
+      background: var(--color-accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
+    }
+    .fun-card-v2__title {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      margin-bottom: var(--sp-4);
+    }
+    .fun-card-v2__desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+    }
+
+    /* --- METERS --- */
+    .meter-section {
+      padding: var(--sp-80) 0;
+    }
+    .meters {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 0 var(--grid-margin-desktop);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-20);
+    }
+    .meter { display: flex; flex-direction: column; gap: var(--sp-8); }
+    .meter__label {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+    }
+    .meter__track {
+      height: 12px;
+      background: var(--color-accent-soft);
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+    }
+    .meter__fill {
+      height: 100%;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(90deg, var(--pink-300), var(--pink-500));
+      transition: width 1s var(--ease-out);
+    }
+
+    /* --- EDUCATION --- */
+    .edu-section {
+      padding: var(--sp-80) 0;
+      background: var(--color-surface-alt);
+    }
+    .edu-grid {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 var(--grid-margin-desktop);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-16);
+    }
+    .edu-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--sp-16);
+    }
+    .edu-card__school {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+    }
+    .edu-card__degree {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      margin-top: var(--sp-4);
+    }
+    .edu-card__coursework {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      margin-top: var(--sp-8);
+      line-height: var(--leading-normal);
+    }
+    .edu-card__date {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-accent);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .about-hero { padding: var(--sp-48) 0 var(--sp-32); }
+      .about-hero__inner {
+        grid-template-columns: 1fr;
+        gap: var(--sp-24);
+        padding: 0 var(--grid-margin-mobile);
+        text-align: center;
+      }
+      .about-hero__photo-area { display: flex; justify-content: center; }
+      .about-hero__photo-area .sticker { display: none; }
+      .about-hero__highlight { text-align: left; }
+
+      .bio-section { padding: var(--sp-48) 0; }
+      .bio-bento {
+        grid-template-columns: 1fr;
+        padding: 0 var(--grid-margin-mobile);
+      }
+      .bio-card--wide { grid-column: span 1; }
+      .bio-card--tall { grid-row: span 1; }
+
+      .funfacts { padding: var(--sp-48) 0; }
+      .funfacts__grid { padding: 0 var(--grid-margin-mobile); }
+      .fun-grid-bento { grid-template-columns: 1fr; }
+
+      .meter-section { padding: var(--sp-48) 0; }
+      .meters { padding: 0 var(--grid-margin-mobile); }
+
+      .edu-section { padding: var(--sp-48) 0; }
+      .edu-grid { padding: 0 var(--grid-margin-mobile); }
+      .edu-card { flex-direction: column; gap: var(--sp-4); }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo"><span class="nav__logo-icon"><svg width="24" height="24" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="18" rx="10" ry="11" fill="#FFB3C6"/><ellipse cx="13" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="19" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="16" cy="22" rx="1.2" ry="1.5" fill="#FF8FAB"/><circle cx="16" cy="9" r="3.5" fill="#8BC9A0"/><circle cx="13" cy="8" r="2.5" fill="#A3D9B1"/></svg></span> linh nhi</a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="about.html" class="nav__link nav__link--active">About</a>
+        <a href="experience.html" class="nav__link">Experience</a>
+        <a href="skills.html" class="nav__link">Skills</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+        <button class="nav__theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="nav__theme-emoji nav__theme-emoji--light">&#9728;&#65039;</span><span class="nav__theme-emoji nav__theme-emoji--dark">&#127769;</span></button>
+      </div>
+      <div style="display:flex;align-items:center;gap:var(--sp-12);">
+        <button class="nav__theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" id="mobileTheme" style="display:none;"><span class="nav__theme-emoji nav__theme-emoji--light">&#9728;&#65039;</span><span class="nav__theme-emoji nav__theme-emoji--dark">&#127769;</span></button>
+        <button class="nav__burger" onclick="toggleMobile()" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="nav__mobile-menu" id="mobileMenu">
+    <a href="index.html" class="nav__link">Home</a>
+    <a href="about.html" class="nav__link nav__link--active">About</a>
+    <a href="experience.html" class="nav__link">Experience</a>
+    <a href="skills.html" class="nav__link">Skills</a>
+    <a href="contact.html" class="nav__link">Contact</a>
+    <button class="nav__theme-toggle" onclick="toggleTheme()" style="margin-top:var(--sp-16);"><span class="nav__theme-emoji nav__theme-emoji--light">&#9728;&#65039;</span><span class="nav__theme-emoji nav__theme-emoji--dark">&#127769;</span></button>
+  </div>
+
+  <main class="page">
+    <!-- HERO -->
+    <section class="about-hero">
+      <div class="gradient-mesh">
+        <div class="gradient-mesh__blob" style="width:350px;height:350px;background:var(--pink-200);top:0;right:5%;"></div>
+        <div class="gradient-mesh__blob" style="width:250px;height:250px;background:var(--cream-200);bottom:0;left:10%;"></div>
+      </div>
+      <div class="about-hero__inner">
+        <div class="about-hero__photo-area">
+          <div class="profile-photo profile-photo--lg">
+            <img src="images/profile.jpg" alt="Linh Nhi" loading="lazy">
+          </div>
+          <div class="sticker" style="--rotate:-5deg;top:-15px;right:-60px;">hey there!</div>
+          <div class="sticker" style="--rotate:4deg;bottom:20px;left:-50px;"><svg width="18" height="18" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="18" rx="10" ry="11" fill="#FFB3C6"/><ellipse cx="13" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="19" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="16" cy="22" rx="1.2" ry="1.5" fill="#FF8FAB"/><circle cx="16" cy="9" r="3.5" fill="#8BC9A0"/><circle cx="13" cy="8" r="2.5" fill="#A3D9B1"/></svg></div>
+        </div>
+        <div class="about-hero__text">
+          <span class="section-header__label" style="text-align:left;">// about me</span>
+          <h1 class="heading-1">Hi, it's me!</h1>
+          <p class="about-hero__intro">
+            You're probably wondering, <em>"Who is her?"</em> Well, surprise! It's me,
+            <strong class="accent-text">Linh Nhi</strong>!
+          </p>
+          <p class="about-hero__intro">
+            I'm a Project Manager at <strong>8seneca</strong> who brings a marketing-first mindset
+            to building products. I believe the best products are built when you truly understand
+            the people using them.
+          </p>
+          <div class="about-hero__highlight">
+            "I make project management fun. Life's too short for boring roadmaps."
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BIO BENTO -->
+    <section class="bio-section">
+      <div class="section-header">
+        <span class="section-header__label">// the basics</span>
+        <h2 class="heading-2"><span class="section-header__underline">a bit more about me</span></h2>
+      </div>
+      <div class="bio-bento">
+        <div class="bio-card bio-card--wide">
+          <span class="bio-card__tag">what i do</span>
+          <div class="bio-card__title">Building enterprise dashboards</div>
+          <div class="bio-card__content">As a PM at 8seneca, I work on enterprise dashboard products. I define project requirements, manage sprints, coordinate with engineering and design, and make sure we're building the right thing.</div>
+        </div>
+        <div class="bio-card bio-card--tall" style="background:linear-gradient(135deg,var(--pink-50),var(--cream-100));border-color:var(--pink-200);">
+          <span class="bio-card__tag">superpower</span>
+          <div class="bio-card__title">Bridging the gap</div>
+          <div class="bio-card__content">Between what users want, what business needs, and what engineering can build. My marketing background means I think about adoption and delight from day one.</div>
+          <div style="margin-top:var(--sp-20);text-align:center;color:var(--color-accent);"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.5 3 3 .5-2 2.5.5 3L12 10l-3 1.5.5-3-2-2.5 3-.5z"/><path d="M5 17l.8 1.5 1.7.3-1.2 1.2.3 1.7L5 21l-1.6.7.3-1.7-1.2-1.2 1.7-.3z"/><path d="M19 17l.8 1.5 1.7.3-1.2 1.2.3 1.7-1.6-.7-1.6.7.3-1.7-1.2-1.2 1.7-.3z"/></svg></div>
+        </div>
+        <div class="bio-card">
+          <span class="bio-card__tag">my journey</span>
+          <div class="bio-card__title">From marketing to PM</div>
+          <div class="bio-card__content">Started in social media, SEO, content. Moved into partnerships and influencer relations, then found my true calling in Project Management.</div>
+        </div>
+        <div class="bio-card">
+          <span class="bio-card__tag">philosophy</span>
+          <div class="bio-card__title">Products should spark joy</div>
+          <div class="bio-card__content">If a feature doesn't make someone's day a little better, we should question why we're building it. User empathy isn't a buzzword, it's the whole point.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUN FACTS -->
+    <section class="funfacts">
+      <div class="section-header">
+        <span class="section-header__label">// fun facts</span>
+        <h2 class="heading-2"><span class="section-header__underline">the important stuff</span></h2>
+      </div>
+      <div class="funfacts__grid">
+        <div class="fun-grid-bento">
+          <div class="fun-card-v2">
+            <div class="fun-card-v2__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11h14c0 5-3 9-7 9s-7-4-7-9z"/><path d="M17 11c2 0 3 1 3 3s-1 3-3 3"/><path d="M7 8c0 0 .5-1.5 2-2"/><path d="M10 6c0 0 .5-2 2-2.5"/></svg></div>
+            <div>
+              <div class="fun-card-v2__title">Matcha Addict</div>
+              <div class="fun-card-v2__desc">My blood type is probably matcha latte at this point. Oat milk, no sugar, extra foam.</div>
+            </div>
+          </div>
+          <div class="fun-card-v2">
+            <div class="fun-card-v2__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="12" rx="4"/><line x1="7" y1="11" x2="7" y2="15"/><line x1="5" y1="13" x2="9" y2="13"/><circle cx="16" cy="11" r="1" fill="currentColor"/><circle cx="18" cy="13" r="1" fill="currentColor"/></svg></div>
+            <div>
+              <div class="fun-card-v2__title">Gamer Girl</div>
+              <div class="fun-card-v2__desc">PS5 and Nintendo Switch are my therapy. Currently into cozy games and the occasional rage quit.</div>
+            </div>
+          </div>
+          <div class="fun-card-v2">
+            <div class="fun-card-v2__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/><circle cx="12" cy="13" r="1.5" fill="currentColor"/><path d="M17 4l.5-.8.8.5-.5.8z" fill="currentColor" stroke="none"/></svg></div>
+            <div>
+              <div class="fun-card-v2__title">Snap Happy</div>
+              <div class="fun-card-v2__desc">Hobby photographer. Mostly food, cats, and sunsets. The holy trinity of Instagram.</div>
+            </div>
+          </div>
+          <div class="fun-card-v2">
+            <div class="fun-card-v2__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4c-3 0-6 3-6 8 0 5 2.5 9 6 9s6-4 6-9c0-5-3-8-6-8z"/><path d="M10 2c0 0 2 1 4 0"/><path d="M12 2v3"/><circle cx="9" cy="11" r=".5" fill="currentColor"/><circle cx="15" cy="11" r=".5" fill="currentColor"/><circle cx="10" cy="14" r=".5" fill="currentColor"/><circle cx="14" cy="14" r=".5" fill="currentColor"/><circle cx="12" cy="17" r=".5" fill="currentColor"/></svg></div>
+            <div>
+              <div class="fun-card-v2__title">Berry Obsessed</div>
+              <div class="fun-card-v2__desc">Strawberry everything. Milk, cake, mochi, ice cream. This entire website is basically my personality.</div>
+            </div>
+          </div>
+          <div class="fun-card-v2">
+            <div class="fun-card-v2__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13c0 5 3.5 8 8 8s8-3 8-8"/><path d="M4 13c0-3 1-6 3-7l1-4 3 3h2l3-3 1 4c2 1 3 4 3 7"/><circle cx="9.5" cy="12" r="1" fill="currentColor"/><circle cx="14.5" cy="12" r="1" fill="currentColor"/><path d="M10 15.5c0 0 1 1 2 1s2-1 2-1"/><line x1="12" y1="13" x2="12" y2="15.5"/></svg></div>
+            <div>
+              <div class="fun-card-v2__title">Cat Person</div>
+              <div class="fun-card-v2__desc">@meoghetanca literally means "cat squishing me." That's the whole brand.</div>
+            </div>
+          </div>
+          <div class="fun-card-v2">
+            <div class="fun-card-v2__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2c3 3 4.5 6.5 4.5 10s-1.5 7-4.5 10"/><path d="M12 2c-3 3-4.5 6.5-4.5 10s1.5 7 4.5 10"/></svg></div>
+            <div>
+              <div class="fun-card-v2__title">Vietnamese</div>
+              <div class="fun-card-v2__desc">Based in Vietnam, working in tech, dreaming in both Vietnamese and English.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHARACTER SHEET -->
+    <section class="meter-section">
+      <div class="section-header">
+        <span class="section-header__label">// personality stats</span>
+        <h2 class="heading-2"><span class="section-header__underline">character sheet</span></h2>
+      </div>
+      <div class="meters">
+        <div class="meter">
+          <div class="meter__label"><span>Matcha Dependency</span><span class="accent-text">95%</span></div>
+          <div class="meter__track"><div class="meter__fill" style="width:95%;"></div></div>
+        </div>
+        <div class="meter">
+          <div class="meter__label"><span>Project Thinking</span><span class="accent-text">88%</span></div>
+          <div class="meter__track"><div class="meter__fill" style="width:88%;"></div></div>
+        </div>
+        <div class="meter">
+          <div class="meter__label"><span>Cat Obsession Level</span><span class="accent-text">100%</span></div>
+          <div class="meter__track"><div class="meter__fill" style="width:100%;"></div></div>
+        </div>
+        <div class="meter">
+          <div class="meter__label"><span>Gaming Skills</span><span class="accent-text">72%</span></div>
+          <div class="meter__track"><div class="meter__fill" style="width:72%;"></div></div>
+        </div>
+        <div class="meter">
+          <div class="meter__label"><span>Strawberry Milk Intake</span><span class="accent-text">UNLIMITED</span></div>
+          <div class="meter__track"><div class="meter__fill" style="width:100%;"></div></div>
+        </div>
+      </div>
+    </section>
+
+<footer class="footer" style="border-top:1.5px solid var(--color-border);padding:var(--sp-32) 0;">
+  <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--sp-16);">
+    <div style="display:flex;align-items:center;gap:var(--sp-8);">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="18" rx="10" ry="11" fill="#FFB3C6"/><ellipse cx="13" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="19" cy="17" rx="1.2" ry="1.5" fill="#FF8FAB"/><ellipse cx="16" cy="22" rx="1.2" ry="1.5" fill="#FF8FAB"/><circle cx="16" cy="9" r="3.5" fill="#8BC9A0"/><circle cx="13" cy="8" r="2.5" fill="#A3D9B1"/></svg>
+      <span style="font-family:var(--font-display);font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--color-text);">Linh Nhi</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:var(--sp-20);font-size:var(--text-sm);">
+      <a href="mailto:nhithl.ad@gmail.com" style="color:var(--color-text-secondary);">nhithl.ad@gmail.com</a>
+      <a href="https://www.linkedin.com/in/nhithl" target="_blank" style="color:var(--color-text-secondary);">LinkedIn</a>
+      <a href="tel:+84392879904" style="color:var(--color-text-secondary);">+84 392 879 904</a>
+    </div>
+  </div>
+</footer>
+  </main>
+
+  <script>
+    function toggleTheme() { document.documentElement.setAttribute('data-theme', document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'); }
+    function toggleMobile() { document.getElementById('mobileMenu').classList.toggle('nav__mobile-menu--open'); document.querySelector('.nav__burger').classList.toggle('nav__burger--open'); }
+    (function(){var t=document.getElementById('mobileTheme');function u(){t.style.display=window.innerWidth<=768?'':'none';}u();window.addEventListener('resize',u);})();
+  </script>
+</body>
+</html>
