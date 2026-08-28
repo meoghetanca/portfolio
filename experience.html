@@ -16,15 +16,13 @@
     .exp-hero__subtitle {
       font-size: var(--text-base);
       color: var(--color-text-secondary);
-      max-width: 480px;
+      max-width: 520px;
       margin: var(--sp-12) auto 0;
     }
 
     /* --- TIMELINE --- */
-    .timeline-section { padding: var(--sp-32) 0 var(--sp-64); }
+    .timeline-section { padding: var(--sp-32) 0 var(--sp-48); }
     .timeline-container { max-width: 700px; margin: 0 auto; padding: 0 var(--grid-margin-desktop); }
-
-    /* Enhanced timeline cards */
     .tl-card {
       padding: var(--sp-24);
       border-radius: var(--radius-2xl);
@@ -65,112 +63,130 @@
       white-space: nowrap;
       letter-spacing: 0.05em;
     }
-
-    /* --- SKILLS BENTO --- */
-    .skills-section {
-      padding: var(--sp-80) 0;
-      background: var(--color-surface-alt);
+    .tl-card__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-8) var(--sp-16);
+      font-size: var(--text-xs);
+      color: var(--color-text-secondary);
+      margin-top: var(--sp-8);
+      margin-bottom: var(--sp-12);
     }
-    .skills-bento {
+    .tl-card__meta span { display: inline-flex; align-items: center; gap: var(--sp-4); }
+    .tl-card__meta b { color: var(--color-accent); font-weight: var(--weight-semibold); }
+
+    /* --- PROJECTS AT 8SENECA --- */
+    .proj-section { padding: var(--sp-48) 0 var(--sp-80); background: var(--color-surface-alt); }
+    .proj-intro {
+      max-width: 760px;
+      margin: 0 auto var(--sp-32);
+      padding: 0 var(--grid-margin-desktop);
+      text-align: center;
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+    }
+    .proj-grid {
       max-width: var(--max-content);
       margin: 0 auto;
       padding: 0 var(--grid-margin-desktop);
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--sp-16);
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-20);
     }
-    .skill-card {
+    .proj-card {
       padding: var(--sp-24);
       border-radius: var(--radius-2xl);
       background: var(--color-card);
       border: 1.5px solid var(--color-border);
       transition: all var(--duration) var(--ease-out);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-12);
+      position: relative;
     }
-    .skill-card:hover {
+    .proj-card--feature { grid-column: span 2; background: linear-gradient(135deg, var(--pink-50), var(--cream-50)); }
+    [data-theme="dark"] .proj-card--feature { background: linear-gradient(135deg, rgba(255, 107, 138, 0.08), rgba(255, 107, 138, 0.03)); }
+    .proj-card:hover {
       border-color: var(--color-accent);
-      box-shadow: var(--shadow-lg);
+      box-shadow: 0 12px 40px rgba(255, 107, 138, 0.12);
       transform: translateY(-4px);
     }
-    .skill-card__icon {
-      width: 44px;
-      height: 44px;
-      border-radius: var(--radius-xl);
-      background: var(--color-accent-soft);
+    .proj-card__top {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-accent);
-      margin-bottom: var(--sp-16);
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--sp-12);
     }
-    .skill-card__title {
+    .proj-card__title {
       font-family: var(--font-display);
-      font-size: var(--text-base);
+      font-size: var(--text-xl);
       font-weight: var(--weight-bold);
-      margin-bottom: var(--sp-12);
+      line-height: 1.2;
     }
-    .skill-card__list {
+    .proj-card__client {
+      font-size: var(--text-xs);
+      color: var(--color-accent);
+      font-weight: var(--weight-semibold);
+      margin-top: var(--sp-4);
+    }
+    .proj-card__roles { display: flex; gap: var(--sp-4); align-items: flex-start; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
+    .role-badge {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: var(--weight-semibold);
+      padding: 3px var(--sp-8);
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+      letter-spacing: 0.03em;
+    }
+    .role-badge--pm { background: var(--color-accent); color: #fff; }
+    .role-badge--ux { background: var(--color-accent-soft); color: var(--color-accent); border: 1px solid var(--color-accent); }
+    .role-badge--qa { background: transparent; color: var(--color-text-secondary); border: 1px solid var(--color-border); }
+    .proj-card__desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+    }
+    .proj-card__impact {
+      list-style: none;
       display: flex;
       flex-direction: column;
       gap: var(--sp-8);
+      margin: var(--sp-4) 0;
     }
-    .skill-card__item {
+    .proj-card__impact li {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: var(--sp-8);
       font-size: var(--text-sm);
-      color: var(--color-text-secondary);
+      color: var(--color-text);
+      line-height: var(--leading-snug);
     }
-    .skill-card__dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--color-accent);
-      min-width: 6px;
-    }
-
-    /* --- TOOLBOX --- */
-    .toolbox-section { padding: var(--sp-80) 0; }
-    .toolbox-grid {
-      max-width: var(--max-content);
-      margin: 0 auto;
-      padding: 0 var(--grid-margin-desktop);
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--sp-8);
-      justify-content: center;
-    }
-    .tool-pill {
+    .proj-card__impact svg { width: 15px; height: 15px; color: var(--color-accent); flex-shrink: 0; margin-top: 3px; }
+    .proj-card__tags { display: flex; flex-wrap: wrap; gap: var(--sp-8); margin-top: auto; }
+    .proj-card__link {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      color: var(--color-accent);
       display: inline-flex;
       align-items: center;
-      padding: var(--sp-12) var(--sp-20);
-      background: var(--color-card);
-      border: 1.5px solid var(--color-border);
-      border-radius: var(--radius-pill);
-      font-size: var(--text-sm);
-      font-weight: var(--weight-semibold);
-      color: var(--color-text);
-      transition: all var(--duration) var(--ease-out);
+      gap: var(--sp-4);
     }
-    .tool-pill:hover {
-      border-color: var(--color-accent);
-      background: var(--color-accent);
-      color: #fff;
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: var(--shadow-md);
-    }
+    .proj-card__link:hover { text-decoration: underline; }
 
-    /* --- RESPONSIVE --- */
+    /* --- EDUCATION --- */
+    .edu-section { padding: var(--sp-80) 0; }
+
     @media (max-width: 768px) {
       .exp-hero { padding: var(--sp-48) 0 var(--sp-32); }
-      .timeline-section { padding: var(--sp-16) 0 var(--sp-48); }
+      .timeline-section { padding: var(--sp-16) 0 var(--sp-32); }
       .timeline-container { padding: 0 var(--grid-margin-mobile); }
       .tl-card__header { flex-direction: column; }
-
-      .skills-section { padding: var(--sp-48) 0; }
-      .skills-bento { grid-template-columns: 1fr; padding: 0 var(--grid-margin-mobile); }
-
-      .toolbox-section { padding: var(--sp-48) 0; }
-      .toolbox-grid { padding: 0 var(--grid-margin-mobile); }
+      .proj-section { padding: var(--sp-32) 0 var(--sp-48); }
+      .proj-intro { padding: 0 var(--grid-margin-mobile); }
+      .proj-grid { grid-template-columns: 1fr; padding: 0 var(--grid-margin-mobile); }
+      .proj-card--feature { grid-column: span 1; }
+      .edu-section { padding: var(--sp-48) 0; }
     }
   </style>
 </head>
@@ -181,7 +197,6 @@
       <div class="nav__links">
         <a href="index.html" class="nav__link">Home</a>
         <a href="about.html" class="nav__link">About</a>
-        <a href="work.html" class="nav__link">Work</a>
         <a href="experience.html" class="nav__link nav__link--active">Experience</a>
         <a href="skills.html" class="nav__link">Skills</a>
         <a href="contact.html" class="nav__link">Contact</a>
@@ -196,7 +211,6 @@
   <div class="nav__mobile-menu" id="mobileMenu">
     <a href="index.html" class="nav__link">Home</a>
     <a href="about.html" class="nav__link">About</a>
-    <a href="work.html" class="nav__link">Work</a>
     <a href="experience.html" class="nav__link nav__link--active">Experience</a>
     <a href="skills.html" class="nav__link">Skills</a>
     <a href="contact.html" class="nav__link">Contact</a>
@@ -213,7 +227,7 @@
       <div class="container" style="position:relative;z-index:1;">
         <span class="section-header__label">// my journey</span>
         <h1 class="heading-1"><span class="section-header__underline">Experience</span></h1>
-        <p class="exp-hero__subtitle">From marketing intern to project manager. Every role shaped how I think about building for people.</p>
+        <p class="exp-hero__subtitle">Where I've worked, and the software I've helped ship along the way.</p>
       </div>
     </section>
 
@@ -221,69 +235,68 @@
     <section class="timeline-section">
       <div class="timeline-container">
         <div class="timeline">
+
           <div class="timeline__item timeline__item--active">
             <div class="timeline__dot"></div>
             <div class="tl-card">
               <div class="tl-card__header">
                 <div>
-                  <div class="timeline__date">May 2025 — Present</div>
-                  <div class="timeline__role">Project Manager</div>
-                  <div class="timeline__company">8seneca</div>
+                  <div class="timeline__role">Assistant Project Manager</div>
+                  <div class="timeline__company">8SENECA</div>
                 </div>
                 <span class="tl-card__badge">current</span>
               </div>
-              <div class="timeline__desc">Managed 8 software products end-to-end &mdash; across AI/ML, data analytics, and web &mdash; for internal and enterprise clients (Asseco, Kalvarium, Plantex, FPD). Ran Agile/Scrum delivery: wrote user stories, planned 2-week sprints, managed backlogs in Plane/Jira, and ran UAT and stakeholder sign-off. Coordinated cross-functional teams of engineers, designers, and AI/ML developers, and stretched into UI/UX and QA where projects needed it. <a href="work.html" style="color:var(--color-accent);font-weight:var(--weight-semibold);">See selected work &rarr;</a></div>
+              <div class="tl-card__meta">
+                <span><b>Full-time</b></span>
+                <span>Jun 2025 to Present &middot; 1 yr 3 mos</span>
+                <span>Vietnam &middot; On-site</span>
+              </div>
+              <div class="timeline__desc">Managing software delivery across a portfolio of products spanning AI/ML, data analytics, and web, for internal and enterprise clients (Asseco, Kalvarium, Plantex, FPD). I run Agile delivery end to end: writing user stories, planning 2-week sprints, managing backlogs in Plane and Jira, coordinating engineers and designers, and running UAT through to stakeholder sign-off. Where a project needed it, I also stepped into UI/UX and QA.</div>
               <div class="timeline__tags">
                 <span class="tag tag--strawberry">Agile / Scrum</span>
                 <span class="tag tag--strawberry">Cross-functional Delivery</span>
                 <span class="tag tag--strawberry">Enterprise Clients</span>
                 <span class="tag tag--strawberry">AI / Data Products</span>
-                <span class="tag tag--strawberry">Roadmapping</span>
                 <span class="tag tag--strawberry">UI/UX + QA</span>
               </div>
+              <div style="margin-top:var(--sp-16);font-size:var(--text-sm);"><a href="#projects" style="color:var(--color-accent);font-weight:var(--weight-semibold);">See the 9 projects I've run at 8SENECA below &#8595;</a></div>
             </div>
           </div>
+
           <div class="timeline__item">
             <div class="timeline__dot"></div>
             <div class="tl-card">
               <div class="tl-card__header">
                 <div>
-                  <div class="timeline__date">Previous Role</div>
                   <div class="timeline__role">Marketing Assistant</div>
                   <div class="timeline__company">WeNoted</div>
                 </div>
               </div>
-              <div class="timeline__desc">Managed the website, social media channels, and SEO/PR content. Coordinated multimedia production and grew engagement across Instagram, Quora, and YouTube.</div>
+              <div class="tl-card__meta">
+                <span><b>Part-time</b></span>
+                <span>Oct 2022 to Present &middot; 3 yrs 11 mos</span>
+                <span>Vietnam &middot; Remote</span>
+              </div>
+              <div class="timeline__desc">Managing the website, social media channels, and SEO and PR content. Coordinating multimedia production and growing engagement across Instagram, Quora, and YouTube.</div>
               <div class="timeline__tags">
                 <span class="tag">Website Management</span><span class="tag">Social Media</span><span class="tag">SEO &amp; PR</span><span class="tag">Content</span>
               </div>
             </div>
           </div>
+
           <div class="timeline__item">
             <div class="timeline__dot"></div>
             <div class="tl-card">
               <div class="tl-card__header">
                 <div>
-                  <div class="timeline__date">Previous Role</div>
-                  <div class="timeline__role">Publisher Development Intern</div>
-                  <div class="timeline__company">Interspace Vietnam</div>
+                  <div class="timeline__role">Partnership</div>
+                  <div class="timeline__company">BOO Trading JSC</div>
                 </div>
               </div>
-              <div class="timeline__desc">Drove creator partnerships and influencer marketing campaigns. Supported publisher onboarding and growth. My first taste of the tech-meets-people side of things.</div>
-              <div class="timeline__tags">
-                <span class="tag">Influencer Marketing</span><span class="tag">Creator Partnerships</span><span class="tag">Partner Growth</span>
-              </div>
-            </div>
-          </div>
-          <div class="timeline__item">
-            <div class="timeline__dot"></div>
-            <div class="tl-card">
-              <div class="tl-card__header">
-                <div>
-                  <div class="timeline__date">Previous Role</div>
-                  <div class="timeline__role">Partnership Intern</div>
-                  <div class="timeline__company">BOO</div>
-                </div>
+              <div class="tl-card__meta">
+                <span><b>Part-time</b></span>
+                <span>Jan 2025 to Mar 2025 &middot; 3 mos</span>
+                <span>Vietnam &middot; Hybrid</span>
               </div>
               <div class="timeline__desc">Built partnerships with university clubs, executed campaigns, conducted market research, organized events, and managed social media. The hustle that taught me how to get things done.</div>
               <div class="timeline__tags">
@@ -291,33 +304,218 @@
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
+    <!-- PROJECTS AT 8SENECA -->
+    <section class="proj-section" id="projects">
+      <div class="section-header">
+        <span class="section-header__label">// what i've shipped at 8seneca</span>
+        <h2 class="heading-2"><span class="section-header__underline">projects at 8SENECA</span></h2>
+      </div>
+      <p class="proj-intro">Nine products across AI/ML, data analytics, web, and brand. My role on each is tagged: <b style="color:var(--color-accent);">PM</b> (Project Manager), <b style="color:var(--color-accent);">UI/UX</b> (Designer), and <b style="color:var(--color-accent);">QA</b> (Tester).</p>
+      <div class="proj-grid">
+
+        <!-- CES Trainer (feature) -->
+        <div class="proj-card proj-card--feature">
+          <div class="proj-card__top">
+            <div>
+              <div class="proj-card__title">CES Trainer</div>
+              <div class="proj-card__client">Client: Asseco &middot; Intelligent Training Platform</div>
+            </div>
+            <div class="proj-card__roles"><span class="role-badge role-badge--pm">PM</span><span class="role-badge role-badge--ux">UI/UX</span></div>
+          </div>
+          <p class="proj-card__desc">An intelligent training assistant for a corporate client. Trainees ask questions across course videos and PDF manuals and get cited answers, complete with the exact video timestamp and the highlighted document passage behind every response. It runs on a retrieval pipeline (RAG) over Azure OpenAI and a Qdrant vector database, with a React and Python stack. It replaces slow manual lookup of training content with semantic, traceable search.</p>
+          <ul class="proj-card__impact">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>As Project Manager, owned scope and delivery for an enterprise client across 3+ sprints, coordinating backend, frontend, and an AI retrieval workstream into one release.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Sequenced milestones from the core RAG backend, to the learning cockpit UI, to the PDF pipeline.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>As UI/UX, designed the dual-pane video and PDF learning interface with answer-driven highlighting.</li>
+          </ul>
+          <div class="proj-card__tags">
+            <span class="tag tag--strawberry">Enterprise Client (Asseco)</span><span class="tag tag--strawberry">AI / RAG</span><span class="tag tag--strawberry">Agile Delivery</span><span class="tag tag--strawberry">UI/UX</span>
+          </div>
+        </div>
+
+        <!-- AutoSeed -->
+        <div class="proj-card">
+          <div class="proj-card__top">
+            <div>
+              <div class="proj-card__title">AutoSeed</div>
+              <div class="proj-card__client">Social Automation Framework</div>
+            </div>
+            <div class="proj-card__roles"><span class="role-badge role-badge--pm">PM</span></div>
+          </div>
+          <p class="proj-card__desc">A multi-platform automation framework that drives dozens of isolated browser profiles to automate LinkedIn engagement at scale, using LLM agents for resilient, self-healing flows that adapt when a page changes.</p>
+          <ul class="proj-card__impact">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Ran a Feb to Jun delivery across 4 sprints: research, core engine, hardening, and UAT.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Scoped a product targeting 10 to 20 times the throughput of manual work, with active risk management on a fast-moving spec.</li>
+          </ul>
+          <div class="proj-card__tags">
+            <span class="tag">LLM Agents</span><span class="tag">Sprint Planning</span><span class="tag">Risk Management</span>
+          </div>
+        </div>
+
+        <!-- JobLead Finder -->
+        <div class="proj-card">
+          <div class="proj-card__top">
+            <div>
+              <div class="proj-card__title">JobLead Finder</div>
+              <div class="proj-card__client">Job-Search Aggregator (Desktop App)</div>
+            </div>
+            <div class="proj-card__roles"><span class="role-badge role-badge--pm">PM</span></div>
+          </div>
+          <p class="proj-card__desc">A packaged Windows app that aggregates job postings from LinkedIn and 5 or more external job sites into one exportable dataset, with an LLM pattern-caching layer that learns each site's structure once to cut scraping cost.</p>
+          <ul class="proj-card__impact">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Drove the product from architecture to a shipped Windows executable in roughly 3 sprints.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Defined scope around a real recruiter workflow; sequenced the scrapers, the pipeline, the UI, and UAT.</li>
+          </ul>
+          <div class="proj-card__tags">
+            <span class="tag">Product Scoping</span><span class="tag">Delivery</span><span class="tag">UAT</span>
+          </div>
+        </div>
+
+        <!-- Plantex -->
+        <div class="proj-card">
+          <div class="proj-card__top">
+            <div>
+              <div class="proj-card__title">Plantex</div>
+              <div class="proj-card__client">Client: Plantex &middot; Warehouse Analytics</div>
+            </div>
+            <div class="proj-card__roles"><span class="role-badge role-badge--pm">PM</span></div>
+          </div>
+          <p class="proj-card__desc">A Power BI operations-intelligence solution for a warehouse client: real-time sales and revenue KPIs, plus inventory ABC and XYZ classification to guide procurement decisions.</p>
+          <ul class="proj-card__impact">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Managed a two-module BI delivery; Module 1 (Sales and Revenue) shipped and was adopted by management.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Coordinated the data modeling and stakeholder-driven layout iterations that produced a management-ready dashboard.</li>
+          </ul>
+          <div class="proj-card__tags">
+            <span class="tag">BI / Analytics</span><span class="tag">Stakeholder Mgmt</span><span class="tag">Data</span>
+          </div>
+        </div>
+
+        <!-- AI YouTube -->
+        <div class="proj-card">
+          <div class="proj-card__top">
+            <div>
+              <div class="proj-card__title">AI YouTube</div>
+              <div class="proj-card__client">Automated Video Production</div>
+            </div>
+            <div class="proj-card__roles"><span class="role-badge role-badge--pm">PM</span></div>
+          </div>
+          <p class="proj-card__desc">An automated video production pipeline that turns a topic into a finished video: a script, then AI voiceover, then word-level alignment, then AI visuals, then automated assembly with synced subtitles.</p>
+          <ul class="proj-card__impact">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Led a 3-person team (a tech lead and a developer) through core-engine delivery.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Managed work in progress across rendering optimization and a UI migration; planned end-to-end UAT.</li>
+          </ul>
+          <div class="proj-card__tags">
+            <span class="tag">Team Leadership</span><span class="tag">AI Product</span><span class="tag">Roadmapping</span>
+          </div>
+        </div>
+
+        <!-- Kalvaria -->
+        <div class="proj-card">
+          <div class="proj-card__top">
+            <div>
+              <div class="proj-card__title">Kalvaria</div>
+              <div class="proj-card__client">Client: Kalvarium &middot; Website &amp; CMS</div>
+            </div>
+            <div class="proj-card__roles"><span class="role-badge role-badge--pm">PM</span><span class="role-badge role-badge--ux">UI/UX</span></div>
+          </div>
+          <p class="proj-card__desc">A content-managed marketing website for a Slovak client, taken from requirements through design to a working clickable prototype.</p>
+          <ul class="proj-card__impact">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>As Project Manager, managed the flow from requirements, to design, to prototype delivery, and authored the CMS handbook.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>As UI/UX, contributed the site layout and content structure.</li>
+          </ul>
+          <div class="proj-card__link" style="margin-top:var(--sp-4);"><a class="proj-card__link" href="https://timely-semolina-6c3c9b.netlify.app/" target="_blank" rel="noopener">View prototype &#8594;</a></div>
+          <div class="proj-card__tags">
+            <span class="tag">Web / CMS</span><span class="tag">UI/UX</span><span class="tag">Client Delivery</span>
+          </div>
+        </div>
+
+        <!-- Marketing AI Tool -->
+        <div class="proj-card">
+          <div class="proj-card__top">
+            <div>
+              <div class="proj-card__title">Marketing AI Tool</div>
+              <div class="proj-card__client">AI Marketing Product &middot; Prototype</div>
+            </div>
+            <div class="proj-card__roles"><span class="role-badge role-badge--ux">UI/UX</span></div>
+          </div>
+          <p class="proj-card__desc">An AI marketing product. I designed and built an interactive, clickable prototype that translated product intent into a testable interface for stakeholder review.</p>
+          <ul class="proj-card__impact">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Owned the UI/UX and shipped a live, shareable prototype for stakeholder review.</li>
+          </ul>
+          <div class="proj-card__link" style="margin-top:var(--sp-4);"><a class="proj-card__link" href="https://meoghetanca.github.io/marketing-ai-prototype/" target="_blank" rel="noopener">View prototype &#8594;</a></div>
+          <div class="proj-card__tags">
+            <span class="tag">UI/UX</span><span class="tag">Prototyping</span><span class="tag">AI Product</span>
+          </div>
+        </div>
+
+        <!-- FPD -->
+        <div class="proj-card">
+          <div class="proj-card__top">
+            <div>
+              <div class="proj-card__title">FPD</div>
+              <div class="proj-card__client">Client: FPD &middot; Corporate Identity</div>
+            </div>
+            <div class="proj-card__roles"><span class="role-badge role-badge--pm">PM</span></div>
+          </div>
+          <p class="proj-card__desc">A corporate identity and brand system engagement for a client. I coordinated the design output against the brand requirements and kept the delivery on track.</p>
+          <ul class="proj-card__impact">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Coordinated scope, timeline, and stakeholder sign-off on the brand deliverables.</li>
+          </ul>
+          <div class="proj-card__tags">
+            <span class="tag">Client Delivery</span><span class="tag">Brand</span><span class="tag">Coordination</span>
+          </div>
+        </div>
+
+        <!-- Zjedene -->
+        <div class="proj-card">
+          <div class="proj-card__top">
+            <div>
+              <div class="proj-card__title">Zjedene</div>
+              <div class="proj-card__client">Kitchen Ops App + Website &middot; QA</div>
+            </div>
+            <div class="proj-card__roles"><span class="role-badge role-badge--qa">QA</span></div>
+          </div>
+          <p class="proj-card__desc">Structured UI quality assurance on a kitchen-operations app and a marketing website, comparing the Figma designs against the built product.</p>
+          <ul class="proj-card__impact">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>As tester, logged 13 or more issues with severity (Critical, High, Medium, Low), the expected result, and an owner for each.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Built a repeatable Figma-versus-build review process for design-to-development handoff.</li>
+          </ul>
+          <div class="proj-card__tags">
+            <span class="tag">QA / Testing</span><span class="tag">Design QA</span><span class="tag">Attention to Detail</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- EDUCATION -->
-<section style="padding:var(--sp-80) 0;background:var(--color-surface-alt);">
-  <div class="section-header">
-    <span class="section-header__label">// education</span>
-    <h2 class="heading-2"><span class="section-header__underline">where i learned</span></h2>
-  </div>
-  <div style="max-width:700px;margin:0 auto;padding:0 var(--grid-margin-desktop);display:flex;flex-direction:column;gap:var(--sp-16);">
-    <div class="bento-card" style="display:flex;justify-content:space-between;align-items:flex-start;gap:var(--sp-16);">
-      <div>
-        <div style="font-family:var(--font-display);font-size:var(--text-lg);font-weight:var(--weight-bold);">Foreign Trade University</div>
-        <div style="font-size:var(--text-sm);color:var(--color-text-secondary);margin-top:var(--sp-4);">Bachelor of International Business Administration</div>
-        <div style="font-size:var(--text-xs);color:var(--color-text-muted);margin-top:var(--sp-8);line-height:var(--leading-normal);">Relevant Coursework: Principle of Marketing, Principle of Management, Methodology for Economics and Business, Strategic Management, Organization Management, E-commerce, Data Analysis.</div>
+    <section class="edu-section" style="background:var(--color-surface-alt);">
+      <div class="section-header">
+        <span class="section-header__label">// education</span>
+        <h2 class="heading-2"><span class="section-header__underline">where i learned</span></h2>
       </div>
-      <div style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-accent);white-space:nowrap;flex-shrink:0;">Oct 2022 - Jan 2026</div>
-    </div>
-    <div class="bento-card" style="display:flex;justify-content:space-between;align-items:flex-start;gap:var(--sp-16);">
-      <div>
-        <div style="font-family:var(--font-display);font-size:var(--text-lg);font-weight:var(--weight-bold);">HNUE High School for Gifted Students</div>
+      <div style="max-width:700px;margin:0 auto;padding:0 var(--grid-margin-desktop);display:flex;flex-direction:column;gap:var(--sp-16);">
+        <div class="bento-card" style="display:flex;justify-content:space-between;align-items:flex-start;gap:var(--sp-16);">
+          <div>
+            <div style="font-family:var(--font-display);font-size:var(--text-lg);font-weight:var(--weight-bold);">Foreign Trade University</div>
+            <div style="font-size:var(--text-sm);color:var(--color-text-secondary);margin-top:var(--sp-4);">Bachelor of International Business Administration</div>
+            <div style="font-size:var(--text-xs);color:var(--color-text-muted);margin-top:var(--sp-8);line-height:var(--leading-normal);">Relevant Coursework: Principle of Marketing, Principle of Management, Methodology for Economics and Business, Strategic Management, Organization Management, E-commerce, Data Analysis.</div>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-accent);white-space:nowrap;flex-shrink:0;">Oct 2022 to Jan 2026</div>
+        </div>
+        <div class="bento-card" style="display:flex;justify-content:space-between;align-items:flex-start;gap:var(--sp-16);">
+          <div>
+            <div style="font-family:var(--font-display);font-size:var(--text-lg);font-weight:var(--weight-bold);">HNUE High School for Gifted Students</div>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-accent);white-space:nowrap;flex-shrink:0;">May 2022</div>
+        </div>
       </div>
-      <div style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-accent);white-space:nowrap;flex-shrink:0;">May 2022</div>
-    </div>
-  </div>
-</section>
+    </section>
 
 <footer class="footer" style="border-top:1.5px solid var(--color-border);padding:var(--sp-32) 0;">
   <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--sp-16);">
