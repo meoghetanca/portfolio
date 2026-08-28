@@ -1,5 +1,5 @@
 /* ============================================
-   SHARED — Strawberry Milk Portfolio
+   SHARED - Strawberry Milk Portfolio
    Tokens + Components + Layout
    ============================================ */
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
@@ -635,7 +635,7 @@ textarea.input { resize: vertical; min-height: 120px; }
 }
 
 /* ============================================
-   RESPONSIVE — Mobile (375px)
+   RESPONSIVE - Mobile (375px)
    ============================================ */
 @media (max-width: 768px) {
   .container { padding: 0 var(--grid-margin-mobile); }
