@@ -195,6 +195,8 @@
     }
     .role-badge--pm { background: var(--color-accent); color: #fff; }
     .role-badge--ux { background: var(--color-accent-soft); color: var(--color-accent); border: 1px solid var(--color-accent); }
+    .role-badge--po { background: var(--pink-700); color: #fff; }
+    [data-theme="dark"] .role-badge--po { background: var(--pink-300); color: var(--pink-900); }
     .role-badge--qa { background: transparent; color: var(--color-text-secondary); border: 1px solid var(--color-border); }
     .proj-card__desc {
       font-size: var(--text-sm);
@@ -295,7 +297,7 @@
       <div class="htimeline">
 
         <div class="htl-item">
-          <div class="htl-node"><span class="htl-dot"></span><span class="htl-period">Oct 2022 to Now</span></div>
+          <div class="htl-node"><span class="htl-dot"></span><span class="htl-period">Oct 2022 to Sep 2026</span></div>
           <div class="job-card">
             <div class="job-card__head">
               <div>
@@ -308,7 +310,7 @@
               <span>3 yrs 11 mos</span>
               <span>Vietnam, Remote</span>
             </div>
-            <div class="job-card__desc">Managing the website, social media channels, and SEO and PR content. Coordinating multimedia production and growing engagement across Instagram, Quora, and YouTube.</div>
+            <div class="job-card__desc">Managed the website, social media channels, and SEO and PR content. Coordinated multimedia production and grew engagement across Instagram, Quora, and YouTube.</div>
             <div class="job-card__tags">
               <span class="tag">Website Management</span><span class="tag">Social Media</span><span class="tag">SEO &amp; PR</span><span class="tag">Content</span>
             </div>
@@ -341,7 +343,7 @@
           <div class="job-card job-card--current">
             <div class="job-card__head">
               <div>
-                <div class="job-card__role">Assistant Project Manager</div>
+                <div class="job-card__role">Project Coordinator</div>
                 <div class="job-card__company">8SENECA</div>
               </div>
               <span class="job-card__badge">current</span>
@@ -351,9 +353,10 @@
               <span>1 yr 3 mos</span>
               <span>Vietnam, On-site</span>
             </div>
-            <div class="job-card__desc">Managing software delivery across a portfolio of products spanning AI/ML, data analytics, and web, for internal and enterprise clients. I run Agile delivery end to end: writing user stories, planning 2-week sprints, managing backlogs in Plane and Jira, coordinating engineers and designers, and running UAT through to stakeholder sign-off. Where a project needs it, I also step into UI/UX and QA. The nine projects I've run are below.</div>
+            <div class="job-card__desc">Managing software delivery across a portfolio of products spanning AI/ML, data analytics, and web, for internal and enterprise clients. I run Agile delivery end to end: writing user stories, planning 2-week sprints, managing backlogs in Plane and Jira, coordinating engineers and designers, and running UAT through to stakeholder sign-off. On two products, Perpetua and JobLead Finder, I also serve as Product Owner, owning direction, backlog, and release priorities. Where a project needs it, I step into UI/UX and QA. The thirteen projects I've worked on are below.</div>
             <div class="job-card__tags">
               <span class="tag tag--strawberry">Agile / Scrum</span>
+              <span class="tag tag--strawberry">Product Ownership</span>
               <span class="tag tag--strawberry">Cross-functional Delivery</span>
               <span class="tag tag--strawberry">AI / Data Products</span>
               <span class="tag tag--strawberry">UI/UX + QA</span>
@@ -373,6 +376,7 @@
       <div class="proj-legend">
         <span>My role on each:</span>
         <span class="proj-legend__item"><span class="role-badge role-badge--pm">PM</span> Project Manager</span>
+        <span class="proj-legend__item"><span class="role-badge role-badge--po">PO</span> Product Owner</span>
         <span class="proj-legend__item"><span class="role-badge role-badge--ux">UI/UX</span> Designer</span>
         <span class="proj-legend__item"><span class="role-badge role-badge--qa">QA</span> Tester</span>
       </div>
@@ -410,30 +414,51 @@
           <ul class="proj-card__impact">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Ran a 4-sprint delivery from research to UAT.</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Scoped for 10 to 20 times the throughput of manual work, with active risk management.</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Later productized and refined into the Marketing AI Tool.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Later productized and refined into Perpetua.</li>
           </ul>
           <div class="proj-card__tags">
             <span class="tag">LLM Agents</span><span class="tag">Sprint Planning</span><span class="tag">Risk Management</span>
           </div>
         </div>
 
-        <!-- Marketing AI Tool -->
+        <!-- Perpetua -->
         <div class="proj-card">
           <div class="proj-card__top">
             <div>
-              <div class="proj-card__title">Marketing AI Tool</div>
+              <div class="proj-card__title">Perpetua</div>
               <div class="proj-card__client">AI Marketing Product, evolution of AutoSeed</div>
             </div>
-            <div class="proj-card__roles"><span class="role-badge role-badge--pm">PM</span><span class="role-badge role-badge--ux">UI/UX</span></div>
+            <div class="proj-card__roles"><span class="role-badge role-badge--po">PO</span><span class="role-badge role-badge--pm">PM</span><span class="role-badge role-badge--ux">UI/UX</span></div>
           </div>
-          <p class="proj-card__desc">The productized evolution of AutoSeed, reworked from an automation framework into a cleaner, more focused AI marketing product. I scoped it from concept to a testable interface and designed and built the interactive, clickable prototype for stakeholder review.</p>
+          <p class="proj-card__desc">The productized evolution of AutoSeed, reworked from an automation framework into a cleaner, more focused AI marketing product and shipped as Perpetua. I scoped it from concept to a testable interface, own the backlog and release priorities as Product Owner, and designed and built the interactive, clickable prototype for stakeholder review.</p>
           <ul class="proj-card__impact">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>As PO, own the product direction, backlog, and what ships in each release.</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>As PM, scoped the product and drove it to a shippable prototype.</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>As UI/UX, designed and built the interactive, clickable interface.</li>
           </ul>
-          <div><a class="proj-card__link" href="https://meoghetanca.github.io/marketing-ai-prototype/" target="_blank" rel="noopener">View prototype &#8594;</a></div>
+          <div style="display:flex;flex-wrap:wrap;gap:var(--sp-16);"><a class="proj-card__link" href="https://perpetua.click/login" target="_blank" rel="noopener">Visit Perpetua &#8594;</a><a class="proj-card__link" href="https://meoghetanca.github.io/marketing-ai-prototype/" target="_blank" rel="noopener">View prototype &#8594;</a></div>
           <div class="proj-card__tags">
             <span class="tag">Product Scoping</span><span class="tag">UI/UX</span><span class="tag">Prototyping</span><span class="tag">Figma</span>
+          </div>
+        </div>
+
+        <!-- Live Translation Platform (Rapport) -->
+        <div class="proj-card">
+          <div class="proj-card__top">
+            <div>
+              <div class="proj-card__title">Live Translation Platform</div>
+              <div class="proj-card__client">Real-Time Speech Translation Product</div>
+            </div>
+            <div class="proj-card__roles"><span class="role-badge role-badge--po">PO</span></div>
+          </div>
+          <p class="proj-card__desc">A real-time speech translation product for cross-language conversations, covering both in-person meetings and online calls. One codebase ships four surfaces: a web app, a desktop app, a browser extension, and the backend service behind accounts, transcripts, and summaries.</p>
+          <ul class="proj-card__impact">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Ran the market research that surfaced the core product problem: every working translation provider demanded an API key the target user would never obtain.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Defined the target customers: the non-technical professional on cross-language calls, and the operations manager who pays for the tool and asks where the audio goes.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Set the v1 roadmap, scoping a managed, invite-gated release and sequencing every requirement into release blockers, 60-day follow-ups, and later work.</li>
+          </ul>
+          <div class="proj-card__tags">
+            <span class="tag">Market Research</span><span class="tag">Product Strategy</span><span class="tag">Roadmapping</span><span class="tag">Personas</span>
           </div>
         </div>
 
@@ -444,15 +469,36 @@
               <div class="proj-card__title">JobLead Finder</div>
               <div class="proj-card__client">Job-Search Aggregator (Desktop App)</div>
             </div>
-            <div class="proj-card__roles"><span class="role-badge role-badge--pm">PM</span></div>
+            <div class="proj-card__roles"><span class="role-badge role-badge--po">PO</span><span class="role-badge role-badge--pm">PM</span></div>
           </div>
           <p class="proj-card__desc">A packaged Windows app that aggregates job postings from LinkedIn and 5 or more external job sites into one exportable dataset, with an LLM pattern-caching layer that learns each site's structure once to cut scraping cost.</p>
           <ul class="proj-card__impact">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Drove the product from architecture to a shipped Windows executable in about 3 sprints.</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Defined scope around a real recruiter workflow; sequenced scrapers, pipeline, UI, and UAT.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>As PO, own the roadmap and decide which sources and features earn a place in each release.</li>
           </ul>
           <div class="proj-card__tags">
             <span class="tag">Product Scoping</span><span class="tag">Delivery</span><span class="tag">UAT</span>
+          </div>
+        </div>
+
+        <!-- Wealth Management Platform (MFO) -->
+        <div class="proj-card">
+          <div class="proj-card__top">
+            <div>
+              <div class="proj-card__title">Wealth Management Platform</div>
+              <div class="proj-card__client">Multi-Audience Financial Services Platform</div>
+            </div>
+            <div class="proj-card__roles"><span class="role-badge role-badge--pm">PM</span></div>
+          </div>
+          <p class="proj-card__desc">A wealth-management platform serving three distinct audiences from one shared foundation: a client-facing portfolio app, an internal admin console, and a partner view. Covers portfolio reporting, payout timelines, document access, and case management.</p>
+          <ul class="proj-card__impact">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Own a 350-plus ticket backlog in Plane, structured as 35 epics, 208 tasks, and 109 sub-tasks.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Track roughly 1,000 hours of estimated delivery work and report burn-down sprint over sprint.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Balance scope across the three audiences, with the admin console and client app each carrying about a quarter of the estimate and the remainder in shared foundations.</li>
+          </ul>
+          <div class="proj-card__tags">
+            <span class="tag">Backlog Management</span><span class="tag">Estimation</span><span class="tag">Plane / Agile</span><span class="tag">FinTech</span>
           </div>
         </div>
 
@@ -514,6 +560,24 @@
           </div>
         </div>
 
+        <!-- Product Logo and Brand Mark (Alicorn) -->
+        <div class="proj-card">
+          <div class="proj-card__top">
+            <div>
+              <div class="proj-card__title">Product Logo &amp; Brand Mark</div>
+              <div class="proj-card__client">Internal Product Identity</div>
+            </div>
+            <div class="proj-card__roles"><span class="role-badge role-badge--ux">UI/UX</span></div>
+          </div>
+          <p class="proj-card__desc">Logo and brand mark design for an internal 8SENECA product, taken from concept exploration through to the final mark and the rules for using it across the product surface.</p>
+          <ul class="proj-card__impact">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Designed the product's logo and core brand mark, and defined how it is applied in the interface.</li>
+          </ul>
+          <div class="proj-card__tags">
+            <span class="tag">Logo Design</span><span class="tag">Brand</span><span class="tag">Visual Design</span><span class="tag">Figma</span>
+          </div>
+        </div>
+
         <!-- Corporate Identity -->
         <div class="proj-card">
           <div class="proj-card__top">
@@ -529,6 +593,26 @@
           </ul>
           <div class="proj-card__tags">
             <span class="tag">UI/UX</span><span class="tag">Brand</span><span class="tag">Visual Design</span><span class="tag">Figma</span>
+          </div>
+        </div>
+
+        <!-- Internal Systems Suite (8Hub) -->
+        <div class="proj-card">
+          <div class="proj-card__top">
+            <div>
+              <div class="proj-card__title">Internal Systems Suite</div>
+              <div class="proj-card__client">Company Operations Platform</div>
+            </div>
+            <div class="proj-card__roles"><span class="role-badge role-badge--qa">QA</span></div>
+          </div>
+          <p class="proj-card__desc">A suite of internal company systems built and run in-house: an HR platform with a React Native mobile app, a self-hosted project-management app used company-wide, and an AI workstream, all sharing one sign-in and keeping people, team, and project data in sync instead of maintained twice.</p>
+          <ul class="proj-card__impact">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Act as the release gate between code review and production across a 135-ticket backlog, 3 sprints, and a 17-person team.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Test every merged ticket on the dev branch before it can be marked ready for production.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Route each failure to the right owner: back to the developer when the code is wrong, back to the backlog when the spec is wrong.</li>
+          </ul>
+          <div class="proj-card__tags">
+            <span class="tag">QA / Testing</span><span class="tag">Release Gating</span><span class="tag">Mobile QA</span><span class="tag">Agile</span>
           </div>
         </div>
 
